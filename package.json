@@ -21,6 +21,7 @@
   "homepage": "https://github.com/aequanimitas/sentire#readme",
   "dependencies": {
     "express": "^4.13.3",
+    "milligram": "^1.0.3",
     "react": "^0.14.5",
     "react-dom": "^0.14.5",
     "webpack": "^1.12.9"
