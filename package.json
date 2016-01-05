@@ -1,0 +1,31 @@
+{
+  "name": "sentire",
+  "version": "0.0.1",
+  "description": "stoic qoute look-up",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "PORT=11000 node server.js",
+    "watch:static": "node server.livereload.js",
+    "watch": "npm run watch:static & npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aequanimitas/sentire.git"
+  },
+  "author": "aequanimitas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aequanimitas/sentire/issues"
+  },
+  "homepage": "https://github.com/aequanimitas/sentire#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5",
+    "webpack": "^1.12.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+  }
+}
