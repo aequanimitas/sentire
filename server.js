@@ -1,7 +1,15 @@
-var express = require('express');
-var app = express();
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config');
 
-app.use(express.static('./public'));
-app.use(express.static('./node_modules/milligram/dist'));
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
+  hot: true,
+  historyApiFallback: true
+}).listen(3000, 'localhost', function (err, result) {
+  if (err) {
+    console.log(err);
+  }
 
-app.listen(process.env.PORT || 3000);
+  console.log('Listening at localhost:3000');
+});
