@@ -1,6 +1,7 @@
 import {Map} from 'immutable';
 
 export function search(state, queryStr, key) {
-  var qry = queryStr.split(' ').join('').toLowerCase();
-  return state.filter(x => x.get('author') === qry);
+  return key === 'tags' ?
+    state.filter(x => x.get('tags').contains(queryStr)) :
+    state.filter(x => x.get(key) === queryStr);
 }
