@@ -5,6 +5,7 @@ export default class App extends Component {
     return (
       <div>
         <form>
+           <label htmlFor="search-field"> Search </label>
            <input type="text" id="search-field" placeholder="procrastination, laziness" />
            <button type="submit">Search!</button>
         </form>
