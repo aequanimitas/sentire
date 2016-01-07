@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register",
+    "test:client": "mocha --compilers js:babel-core/register --require ./test/test_helpers.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",
+    "test:watch:client": "npm run test:client -- --watch",
     "serve": "PORT=11000 node server.js",
     "watch:static": "node server.livereload.js",
     "watch": "npm run watch:static & npm run serve",
@@ -38,13 +40,18 @@
     "babel-preset-stage-0": "^6.3.13",
     "chai": "^3.4.1",
     "chai-immutable": "^1.5.3",
+    "jsdom": "^7.2.2",
     "mocha": "^2.3.4",
     "nodemon": "^1.8.1",
+    "react-addons-test-utils": "^0.14.5",
     "react-hot-loader": "^1.3.0",
     "webpack": "^1.12.10",
     "webpack-dev-server": "^1.14.0"
   },
   "babel": {
-    "presets": ["es2015", "react"]
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }
