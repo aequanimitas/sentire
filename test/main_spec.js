@@ -2,7 +2,7 @@ import {Map, List, Seq} from 'immutable';
 import {expect} from 'chai';
 import {search} from '../src/main';
 
-describe('Application logic', () => {
+describe('Application logic should', () => {
   let quotes;
   beforeEach(() => {
     // this will act as the source of all qoutes

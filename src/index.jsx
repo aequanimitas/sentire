@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-export default class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div>
@@ -11,6 +12,10 @@ export default class App extends Component {
         </form>
         <section> hot loader? </section>
       </div>
-    );
+      ) 
   }
 }
+
+ReactDOM.render(
+  <App /> , 
+  document.getElementById('react-container'));
