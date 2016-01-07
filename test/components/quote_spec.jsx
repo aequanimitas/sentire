@@ -7,6 +7,8 @@ import { expect } from 'chai';
 describe('Quote box', () => {
   it('should have an author span', () => {
     const component = ReactTestUtils.renderIntoDocument( <Quote /> );
-    console.log(ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'div'));
+    const quoteAuthor = ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'span');
+    expect(quoteAuthor.length).to.equal(1);
+    expect(quoteAuthor[0].classList[0]).to.equal('quote-author');
   });
 })
