@@ -11,7 +11,7 @@ const quote = Map({
            'you are fond of a specific ceramic cup, remind yourself that it is ' +
            'only ceramic cups in general of which you are fond. Then, if it ' +
            'breaks, you will not be disturbed. If you kiss your child, or your ' +
-           'wife, say that you only kiss things which are human, and thus you' +
+           'wife, say that you only kiss things which are human, and thus you ' +
            'will not be disturbed if either of them dies.',
      author: 'epictetus',
      tags: List.of('attachment')

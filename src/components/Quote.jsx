@@ -6,8 +6,9 @@ export default React.createClass({
   },
 
   render: function() {
-    return <div className="quote-container"> 
-        <span className="quote-author">{this.props.quote.author}</span>
+    return <div className="quote-container">
+      <p className="quote-text">{this.props.quote.quote}</p>
+      <span className="quote-author">{this.props.quote.author}</span>
     </div>;
   }
 });
