@@ -14,7 +14,7 @@ const quote = Map({
            'wife, say that you only kiss things which are human, and thus you ' +
            'will not be disturbed if either of them dies.',
      author: 'epictetus',
-     tags: List.of('attachment')
+     tags: List.of('attachment', 'impression')
   });
 
 ReactDOM.render(

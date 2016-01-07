@@ -18,7 +18,7 @@ describe('Quote box', () => {
              'wife, say that you only kiss things which are human, and thus you ' +
              'will not be disturbed if either of them dies.',
        author: 'epictetus',
-       tags: List.of('attachment')
+       tags: List.of('attachment', 'impression')
     });
     component = ReactTestUtils.renderIntoDocument(<Quote quote={quote.toObject()}/>);
   });
@@ -62,6 +62,30 @@ describe('Quote box', () => {
        'will not be disturbed if either of them dies.' 
       );
     });
+  });
 
+  describe('tags', () => {
+    let tags, tagContainer;
+
+    beforeEach(() => {
+      tagContainer = ReactTestUtils.scryRenderedDOMComponentsWithClass(component, 'tags');
+      tags = ReactTestUtils.scryRenderedDOMComponentsWithClass(component, 'tag');
+    });
+
+    it('should have a ul', () => {
+       expect(tagContainer.length).to.equal(1);
+    });
+
+    it('should have two tags', () => {
+       expect(tags.length).to.equal(2);
+    });
+    
+    it('should be attachement', () => {
+       expect(tags[0].textContent).to.equal('attachment');
+    });
+
+    it('should be impression', () => {
+      expect(tags[1].textContent).to.equal('impression');
+    });
   });
 })
