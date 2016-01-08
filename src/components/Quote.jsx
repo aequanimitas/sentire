@@ -1,16 +1,15 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default React.createClass({
-  getTags: function() {
-    return this.props.quote.tags.toArray() || [];
-  },
-
   render: function() {
+    const { quote, author } = this.props.quote;
+    const tags = this.props.quote.tags.toArray() || [];
     return <div className="quote-container">
-      <p className="quote-text">{this.props.quote.quote}</p>
-      <span className="quote-author">{this.props.quote.author}</span>
+      <p className="quote-text">{quote}</p>
+      <span className="quote-author">{author}</span>
       <ul className="tags">
-        {this.getTags().map(tag => 
+        {tags.map(tag => 
           <li className="tag" key={tag}>{tag}</li>
         )}
       </ul>
