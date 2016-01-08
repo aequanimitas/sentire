@@ -5,6 +5,12 @@ import {Map, List} from 'immutable'
 import Quote from '../../src/components/Quote';
 import { expect } from 'chai';
 
+const {
+  renderIntoDocument,
+  scryRenderedDOMComponentsWithTag,
+  scryRenderedDOMComponentsWithClass
+} = ReactTestUtils;
+
 describe('Quote box', () => {
   let quote, component;
   beforeEach(() => {
@@ -20,13 +26,13 @@ describe('Quote box', () => {
        author: 'epictetus',
        tags: List.of('attachment', 'impression')
     });
-    component = ReactTestUtils.renderIntoDocument(<Quote quote={quote.toObject()}/>);
+    component = renderIntoDocument(<Quote quote={quote.toObject()}/>);
   });
   describe('author', () => {
     let author;
 
     beforeEach(() => {
-      author = ReactTestUtils.scryRenderedDOMComponentsWithTag(component, 'span');
+      author = scryRenderedDOMComponentsWithTag(component, 'span');
     });
 
     it('text should be equal to epictetus', () => {
@@ -43,7 +49,7 @@ describe('Quote box', () => {
     let content;
 
     beforeEach(() => {
-      content = ReactTestUtils.scryRenderedDOMComponentsWithClass(component, 'quote-text');
+      content = scryRenderedDOMComponentsWithClass(component, 'quote-text');
     });
 
     it('should have class quote-text', () => {
@@ -68,8 +74,8 @@ describe('Quote box', () => {
     let tags, tagContainer;
 
     beforeEach(() => {
-      tagContainer = ReactTestUtils.scryRenderedDOMComponentsWithClass(component, 'tags');
-      tags = ReactTestUtils.scryRenderedDOMComponentsWithClass(component, 'tag');
+      tagContainer = scryRenderedDOMComponentsWithClass(component, 'tags');
+      tags = scryRenderedDOMComponentsWithClass(component, 'tag');
     });
 
     it('should have a ul', () => {
