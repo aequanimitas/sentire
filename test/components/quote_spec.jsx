@@ -8,7 +8,9 @@ import { expect } from 'chai';
 const {
   renderIntoDocument,
   scryRenderedDOMComponentsWithTag,
-  scryRenderedDOMComponentsWithClass
+  findRenderedDOMComponentWithTag,
+  scryRenderedDOMComponentsWithClass,
+  Simulate
 } = ReactTestUtils;
 
 describe('Quote box', () => {
@@ -24,6 +26,8 @@ describe('Quote box', () => {
              'wife, say that you only kiss things which are human, and thus you ' +
              'will not be disturbed if either of them dies.',
        author: 'epictetus',
+       book: 'enchiridion',
+       verse: '4',
        tags: List.of('attachment', 'impression')
     });
     component = renderIntoDocument(<Quote quote={quote.toObject()}/>);
@@ -93,5 +97,30 @@ describe('Quote box', () => {
     it('should be impression', () => {
       expect(tags[1].textContent).to.equal('impression');
     });
+  });
+
+  describe('favorite button', () => {
+    let faveButton;
+    beforeEach(() => {
+      faveButton = findRenderedDOMComponentWithTag(component, 'button');
+    });
+
+    it('should just exist', () => {
+      expect(faveButton.textContent).to.equal('favorite');
+    });
+
+    it('should have class name favorite', () => {
+      expect(faveButton.classList[0]).to.equal('favorite');
+    });
+
+    it('should invoke callback when clicked', () => {
+      let favorited;
+      const favorite = (bookVerse) => favorited = bookVerse;
+      component = renderIntoDocument(<Quote quote={quote.toObject()} favorite={favorite} />);
+      faveButton = findRenderedDOMComponentWithTag(component, 'button');
+      Simulate.click(faveButton);
+      expect(favorited).to.equal('enchiridion_4');
+    });
+
   });
 })

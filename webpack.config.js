@@ -1,9 +1,8 @@
 var webpack = require('webpack');
-var port = process.env.PORT;
-
+console.log(webpack);
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:'+port,
+    'webpack-dev-server/client?http://localhost:10000',
     'webpack/hot/only-dev-server',
     './src/index.jsx'
   ],
@@ -24,8 +23,7 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
-    hot: true,
-    port: port
+    hot: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

@@ -8,10 +8,7 @@
     "test:client": "mocha --compilers jsx:babel-core/register --require ./test/test_helpers.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",
     "test:watch:client": "npm run test:client -- --watch",
-    "serve": "PORT=11000 node server.js",
-    "watch:static": "node server.livereload.js",
-    "watch": "npm run watch:static & npm run serve",
-    "start:dev": "node server.js"
+    "dev:serve": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
