@@ -1,9 +1,10 @@
 var webpack = require('webpack');
-console.log(webpack);
+
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:10000',
     'webpack/hot/only-dev-server',
+    'file?name=index.html!jade-html!./views/index.jade',
     './src/index.jsx'
   ],
   module: {
@@ -23,7 +24,8 @@ module.exports = {
   },
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    port: 10000
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

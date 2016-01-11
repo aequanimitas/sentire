@@ -8,7 +8,8 @@ app.use(express.static('dist'));
 app.use(express.static('node_modules/milligram/dist'));
 
 app.get('/', function(req, res) {
-  res.render('index', {title: 'iamtest'});
+  console.log(req);
+  res.render('index', {title: 'Sentire'});
 });
 
 export { app }
