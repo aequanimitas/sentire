@@ -8,8 +8,8 @@
     "test:client": "mocha --compilers jsx:babel-core/register --require ./test/test_helpers.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",
     "test:watch:client": "npm run test:client -- --watch",
-    "dev:serve": "webpack-dev-server",
-    "build:production": "webpack --config webpack.config.production.js"
+    "dev:serve": "DEBUG=true webpack-dev-server",
+    "build:production": "webpack"
   },
   "repository": {
     "type": "git",
