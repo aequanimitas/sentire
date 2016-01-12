@@ -8,6 +8,7 @@ import reducer from './reducer';
 import {Map, List} from 'immutable';
 
 require('../node_modules/milligram/dist/milligram.css');
+require('../static/main.css');
 
 const initialState = window.__INITIAL_STATE__;
 
