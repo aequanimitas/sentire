@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Router, {Route} from 'react-router';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App';
@@ -14,10 +13,6 @@ const initialState = window.__INITIAL_STATE__;
 
 let store = createStore(reducer, initialState);
 let rootElem = document.getElementById('react-container');
-
-const routes = <Route component={App}>
-  <Route path="/" component={QuoteContainer}></Route>
-</Route>
 
 render(
   <Provider store={store}>
