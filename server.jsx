@@ -47,7 +47,8 @@ function renderFullPage(html, initialState) {
     <html lang="en">
     <head>
       <meta charset="UTF-8">
-      <title></title>
+      <title>Sentire</title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
     </head>
     <body>
     <div id="react-container" class="container">${html}</div>
