@@ -9,8 +9,9 @@ describe('Quote Reducer', () => {
       type: 'LOAD_QUOTES',
       state: epictetusFixture
     };
-    const reshape = reducer(initState, step);
+    let reshape = reducer(initState, step);
     expect(reshape[0]).to.equal(step.state[0]);
     expect(reshape[0].tags.length).to.equal(step.state[0].tags.length);
+    reshape = reducer(undefined, step)
   });
 });

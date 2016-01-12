@@ -1,21 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-export default React.createClass({
+export const Quote = React.createClass({
   mixins: [PureRenderMixin],
   render: function() {
-    const { quote, author } = this.props.quote;
-    const bookVerse = this.props.quote.book + '_' + this.props.quote.verse;
-    const tags = this.props.quote.tags.toArray() || [];
-    return <div className="quote-container">
-      <button key={bookVerse} onClick={() => this.props.favorite(bookVerse)} className="favorite">favorite</button>
-      <p className="quote-text">{quote}</p>
-      <span className="quote-author">{author}</span>
-      <ul className="tags">
-        {tags.map(tag => 
-          <li className="tag" key={tag}>{tag}</li>
-        )}
-      </ul>
-    </div>;
+    return <div> 
+      {this.props.quotes.map( qt =>
+        <div className="quote-container" key={qt.author + qt.book + qt.verse}>
+          <p className="quote-text">{qt.quote}</p>
+          <span className="quote-author">{qt.author}</span>
+          <ul className="tags">
+            {qt.tags.map(tag => 
+              <li className="tag" key={tag}>{tag}</li>
+            )}
+          </ul>
+        </div>
+      )}
+    </div>
   }
 });
+
+function mapStateToProps(state) {
+  return {
+    quotes: state.quotes
+  }
+}
+
+export const QuoteContainer = connect(
+  mapStateToProps
+)(Quote);
