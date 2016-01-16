@@ -1,12 +1,29 @@
-import React from 'react'
-import { createDevTools } from 'redux-devtools';
-import LogMonitor from 'redux-devtools-log-monitor';
-import DockMonitor from 'redux-devtools-dock-monitor';
+import React from 'react';
+import { createStore as initialCreateStore, compose } from 'redux';
 
-const DevTools = createDevTools(
-  <DockMonitor toggleVisibilityKey='ctrl-i' changePositionKey='ctrl-q'>
-    <LogMonitor theme='tomorrow' /> 
-  </DockMonitor>
-);
+export let createStore = initialCreateStore;
 
-export { DevTools }
+if (__ISDEV__) {
+  createStore = compose (
+    require('redux-devtools').devTools(),
+    require('redux-devtools').persistState(
+      window.location.href.match(/[?&]debug_session=([^&]+)\b/)
+    ),
+    createStore
+  );
+}
+
+
+export function renderDevTools(store) {
+  if(__ISDEV__) {
+    let { DevTools } = 'redux-devtools';
+    let { LogMonitor } = 'redux-devtools-log-monitor';
+    let { DebugPanel } = 'react';
+    return (
+      <DebugPane top right bottom>
+        <DevTools store={store} monitor={LogMonitor} />
+      </DebugPane>
+    )
+  }
+  return null;
+}

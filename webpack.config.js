@@ -8,7 +8,6 @@ var isDev = new webpack.DefinePlugin({
 
 if (process.env.DEBUG) {
   // add dev entries
-  entry.unshift('file?name=index.html!jade-html!./views/index.jade');
   entry.unshift('webpack/hot/only-dev-server');
   entry.unshift('webpack-dev-server/client?http://localhost:10000');
 

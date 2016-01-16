@@ -7,6 +7,8 @@ import { renderToString } from 'react-dom/server';
 import reducer from './src/reducer';
 import { QuoteContainer } from './src/components/Quote';
 
+import fs from 'fs';
+
 const app = express();
 
 app.use(express.static('dist'));
@@ -38,7 +40,9 @@ function handleRender(req, res) {
   );
 
   const initialState = store.getState();
-  res.send(renderFullPage(html, initialState));
+  const index = fs.readFileSync('./index.html', 'utf8');
+  //res.send(renderFullPage(html, initialState));
+  res.send(index);
 }
 
 function renderFullPage(html, initialState) {
