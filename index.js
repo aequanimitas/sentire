@@ -1,8 +1,14 @@
+import 'milligram/dist/milligram.css';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 
 let App = React.createClass({
-  return: function() {
+  render: function() {
     return <div>Sentire</div>
   }
-})
+});
+
+render(
+  <App />,
+  document.getElementById('root')
+);
