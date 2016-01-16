@@ -1,8 +1,5 @@
-node_modules/
 *.swp
-bundle.js
-dist
-.sass-cache/
-vendor/
-*.css*
+node_modules/
+dist/
 .bundle/
+.sass-cache/
