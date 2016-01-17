@@ -7,7 +7,7 @@ describe('Quote actions', () => {
     let qid = '123456';
     const expectedAction = {
       type: 'ADD_FAVORITE',
-      qid
+      id: qid
     };
     expect(actions.addFavorite(qid)).toEqual(expectedAction);
   });
@@ -16,7 +16,7 @@ describe('Quote actions', () => {
     let qid = '123456';
     const expectedAction = {
       type: 'DELETE_FAVORITE',
-      qid
+      id: qid
     };
     expect(actions.deleteFavorite(qid)).toEqual(expectedAction);
   });

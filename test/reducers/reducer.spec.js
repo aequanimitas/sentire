@@ -13,6 +13,13 @@ describe('Quotes reducer', () => {
     })).toEqual(['enchiridion_8', 'enchiridion_1']);
   });
 
+  it('should return no duplicates, which can be resolved by using immutable.js', () => {
+    expect(reducer(undefined, {
+      type: 'ADD_FAVORITE',
+      id: 'enchiridion_8'
+    })).toEqual(['enchiridion_8']);
+  });
+
   it('should remove id from favorites on DELETE_FAVORITE', () => {
     expect(reducer(['enchiridion_8', 'enchiridion_1'], {
       type: 'DELETE_FAVORITE',
