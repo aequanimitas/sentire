@@ -2,6 +2,6 @@ import React, { Component } from 'react';
 
 export default class App extends Component {
   render() {
-    return <div>Sentire</div>
+    return <div className='container'>Sentire</div>
   }
 }
