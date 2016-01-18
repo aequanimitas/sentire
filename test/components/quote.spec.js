@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import TestUtils from 'react-addons-test-utils'
 
-import Quote from '../../src/components/Quote';
+import { Quote } from '../../src/components/Quote';
 
 function setup() {
   let props = {
@@ -33,4 +33,5 @@ describe('Quote Component', () => {
     expect(props.addFavorite.calls.length).toBe(1);
     expect(props.addFavorite).toHaveBeenCalledWith('enchiridion_4');
   });
+
 });
