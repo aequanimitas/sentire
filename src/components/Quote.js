@@ -1,10 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 
 class Quote extends Component {
+  handleClick() {
+    this.props.addFavorite(this.props.quote.book + '_' + this.props.quote.chapter);
+  }
   render() {
     return (
-      <div>
-        <button key={this.props.quote.book + '_' + this.props.quote.chapter} 
+      <div className="qoute-container">
+        <button onClick={ e => this.handleClick(e)}
+                key={this.props.quote.book + '_' + this.props.quote.chapter} 
                 className="favorite">favorite</button>
         <p className="quote-text">{this.props.quote.quote}</p>
         <span className="quote-author">{this.props.quote.author}</span>
@@ -17,6 +21,7 @@ class Quote extends Component {
 }
 
 Quote.propTypes = {
-  quote: React.PropTypes.object.isRequired 
+  quote: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired
 }
 export default Quote;
