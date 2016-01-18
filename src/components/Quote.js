@@ -1,23 +1,21 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { addFavorite, deleteFavorite } from '../actions/quotes.js';
 
-export class Quote extends Component {
+class Quote extends Component {
   constructor(props) {
     super(props);
     this.state = { disabled: false };
   }
 
-  handleClick(tempId) {
-    this.props.dispatch(addFavorite(tempId));
+  handleClick() {
+    this.props.addFavorite(this.props.quote.book + '_' + this.props.quote.chapter);
     this.setState({disabled: true});
   }
 
   render() {
-    const tempId = this.props.quote.book + '_' + this.props.quote.chapter;
+    let tempId = this.props.quote.book + '_' + this.props.quote.chapter;
     return (
       <div className="qoute-container container">
-        <button onClick={ () => this.handleClick(tempId) }
+        <button onClick={ this.handleClick.bind(this) }
                 key={tempId}
                 disabled={this.state.disabled}
                 className="favorite">favorite</button>
@@ -32,7 +30,8 @@ export class Quote extends Component {
 }
 
 Quote.propTypes = {
-  quote: PropTypes.object.isRequired
+  quote: PropTypes.object.isRequired,
+  addFavorite: PropTypes.func.isRequired
 }
 
-export default connect()(Quote);
+export default Quote;

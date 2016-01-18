@@ -1,14 +1,14 @@
-import React from 'react';
 import expect from 'expect';
+import React from 'react';
 import TestUtils from 'react-addons-test-utils'
-
-import { Quote } from '../../src/components/Quote';
+import Quote from '../../src/components/Quote';
 
 function setup() {
   let props = {
     quote: require('../fixtures/epictetus.json')[0],
     addFavorite: expect.createSpy()
   };
+
   let renderer = TestUtils.createRenderer();
   renderer.render(<Quote {...props} />);
   let output = renderer.getRenderOutput();
