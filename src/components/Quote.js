@@ -8,7 +8,6 @@ class Quote extends Component {
 
   handleClick() {
     this.props.addFavorite(this.props.quote.book + '_' + this.props.quote.chapter);
-    this.setState({disabled: true});
   }
 
   render() {
@@ -17,7 +16,6 @@ class Quote extends Component {
       <div className="qoute-container container">
         <button onClick={ this.handleClick.bind(this) }
                 key={tempId}
-                disabled={this.state.disabled}
                 className="favorite">favorite</button>
         <p className="quote-text">{this.props.quote.quote}</p>
         <span className="quote-author">{this.props.quote.author}</span>
