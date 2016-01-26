@@ -16,6 +16,10 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/api/quotes', function(req, res) {
+  res.json(require('./test/fixtures/epictetus.json'));
+});
+
 app.listen(process.env.PORT || 3000, function() {
   console.log("server listening at port " + this.address().port);
 });
