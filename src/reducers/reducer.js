@@ -1,6 +1,7 @@
+import { combineReducers } from 'redux';
 const initialState = ['enchiridion_8'];
 
-export default function quotes(state = initialState, action) {
+function quotes(state = initialState, action) {
   switch(action.type) {
     case 'ADD_FAVORITE':
       if (state.indexOf(action.id) > -1) {
@@ -14,3 +15,9 @@ export default function quotes(state = initialState, action) {
       return state;
   }
 }
+
+const rootReducer = combineReducers({
+  quotes
+});
+
+export default rootReducer;

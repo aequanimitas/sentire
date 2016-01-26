@@ -20,4 +20,5 @@ describe('Quote actions', () => {
     };
     expect(actions.deleteFavorite(qid)).toEqual(expectedAction);
   });
+
 });
