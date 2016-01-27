@@ -1,34 +1,36 @@
 import { combineReducers } from 'redux';
 const initialState = {
-  favorite: [],
-  quote: {}
+  favorites: [],
+  quotes: []
 }
 
-function favorite(state = initialState, action) {
+function favorites(state = initialState.favorites, action) {
   switch(action.type) {
     case 'ADD_FAVORITE':
-      if (state.favorite.indexOf(action.id) > -1) {
+      if (state.indexOf(action.id) > -1) {
         return state;
       } else {
         return [ ...state, action.id ];
       }
     case 'DELETE_FAVORITE':
-      return state.favorite.filter(quote => quote !== action.id);
+      return state.filter(quote => quote !== action.id);
     default:
       return state;
   }
 }
 
-function quote(state = initialState.quote, action) {
+function quotes(state = initialState.quotes, action) {
   switch(action.type) {
+    case 'RECEIVED_QUOTES':
+      return [...state, ...action.quotes];
     default:
       return state;
   }
 }
 
 const rootReducer = combineReducers({
-  favorite,
-  quote
+  favorites,
+  quotes
 });
 
 export default rootReducer;
