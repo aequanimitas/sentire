@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Quote from '../components/Quote';
 import * as QuoteActions from '../actions/quotes';
+import * as FavoriteActions from '../actions/favorites';
 
 class App extends Component {
   render() {
@@ -20,7 +21,7 @@ class App extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(QuoteActions, dispatch)
+    actions: bindActionCreators(FavoriteActions, dispatch)
   }
 }
 
