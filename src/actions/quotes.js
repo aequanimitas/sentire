@@ -1,12 +1,4 @@
-import fethc from 'isomorphic-fetch';
-
-export function addFavorite(qid) {
-  return { type: 'ADD_FAVORITE', id: qid };
-}
-
-export function deleteFavorite(qid) {
-  return { type: 'DELETE_FAVORITE', id: qid };
-}
+import fetch from 'isomorphic-fetch';
 
 export function receivedQuotes(data) {
   return {
