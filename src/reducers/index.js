@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 const initialState = {
   favorites: [],
   quotes: [],
-  user: { id: undefined }
+  user: { id: undefined, role: 'anonymous' }
 }
 
 function user(state = initialState.user, action) {
