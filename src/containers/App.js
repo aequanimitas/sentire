@@ -8,7 +8,7 @@ import * as FavoriteActions from '../actions/favorites';
 class App extends Component {
   render() {
     const { actions, quotes} = this.props;
-    return (<div> 
+    return (<div className="row">
         {quotes.map(qt => <Quote quote={qt} key={qt.book + qt.chapter} addFavorite={actions.addFavorite} /> )}
     </div>);
   }

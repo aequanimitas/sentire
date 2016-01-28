@@ -13,7 +13,7 @@ class Quote extends Component {
   render() {
     let tempId = this.props.quote.book + '_' + this.props.quote.chapter;
     return (
-      <div className="qoute-container container">
+      <div className="quote-container column">
         <button onClick={ this.handleClick.bind(this) }
                 key={tempId}
                 className="favorite">favorite</button>

@@ -1,12 +1,9 @@
 .quote-container {
-  max-width: 300px;
-  display: inline-block;
-  position: relative;
-  position: relative;
-  display: block;
-  width: 450px;
-  float: left;
-  margin-right: 20px;
+  .quote-text {
+    max-height: 20rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .tags {
@@ -25,10 +22,3 @@
     padding: 6px;
   }
 }
-
-  button:disabled {
-      background-color: #606c76;
-      border-color: #606c76;
-      color: #ffffff;
-      outline: 0;
-  }
