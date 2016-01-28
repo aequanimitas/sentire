@@ -7,8 +7,7 @@ import rootReducer from '../reducers';
 
 
 const finalCreateStore = compose(
-  applyMiddleware(thunkMiddleware),
-  applyMiddleware(createLogger()),
+  applyMiddleware(thunkMiddleware, createLogger()),
   DevTools.instrument()
 )(createStore);
 
