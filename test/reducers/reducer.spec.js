@@ -1,11 +1,13 @@
 import expect from 'expect';
 import reducer from '../../src/reducers';
 
-describe('Quotes reducer', () => {
+describe('Favorites reducer', () => {
   it('should return initial state if state is undefined', () => {
+    console.log(reducer(undefined, {}));
     expect(reducer(undefined, {})).toEqual({
         favorites: [],
-        quotes: []
+        quotes: [],
+	user: { id: undefined }
     });
   });
 
@@ -16,7 +18,8 @@ describe('Quotes reducer', () => {
       id: 'enchiridion_1'
     })).toEqual({
       favorites: ['enchiridion_8', 'enchiridion_1'],
-      quotes: []
+      quotes: [],
+      user: { id: undefined }
     });
   });
 
@@ -27,7 +30,8 @@ describe('Quotes reducer', () => {
       id: 'enchiridion_8'
     })).toEqual({
       favorites: ['enchiridion_8'],
-      quotes: []
+      quotes: [],
+      user: { id: undefined }
     });
   });
 
@@ -38,7 +42,8 @@ describe('Quotes reducer', () => {
       id: 'enchiridion_8'
     })).toEqual({
       favorites: ['enchiridion_1'],
-      quotes: []
+      quotes: [],
+      user: { id: undefined }
     });
   });
 });
