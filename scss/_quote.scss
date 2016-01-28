@@ -7,22 +7,25 @@
   width: 450px;
   float: left;
   margin-right: 20px;
-  .tags {
-    .tag {
-      list-style: none;
-      float: left;
-      display: block;
-      margin-right: 6px;
-      border-radius: .4rem;
-      font-weight: 600;
-      text-align: center;
-      background-color: #9b4dca;
-      background-color: #9b4dca;
-      color: #fff;
-      padding: 6px;
-    }
+}
+
+.tags {
+  margin-top: 1rem;
+  .tag {
+    list-style: none;
+    display: inline-block;
+    margin-left: 1rem;
+    border-radius: .4rem;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #9b4dca;
+    background-color: #9b4dca;
+    color: #fff;
+    padding: 6px;
   }
 }
+
   button:disabled {
       background-color: #606c76;
       border-color: #606c76;

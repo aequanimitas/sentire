@@ -20,7 +20,7 @@ class Quote extends Component {
         <p className="quote-text">{this.props.quote.quote}</p>
         <span className="quote-author">{this.props.quote.author}</span>
         <ul className="tags row">
-          {this.props.quote.tags.map(tag => <li className="tag column" key={tag}>{tag}</li>)}
+          {this.props.quote.tags.map(tag => <li className="tag" key={tag}>{tag}</li>)}
         </ul>
       </div>
     );
