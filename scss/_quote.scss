@@ -20,5 +20,8 @@
     background-color: #9b4dca;
     color: #fff;
     padding: 6px;
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }

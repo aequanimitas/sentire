@@ -1,7 +1,15 @@
 import { combineReducers } from 'redux';
 const initialState = {
   favorites: [],
-  quotes: []
+  quotes: [],
+  user: { id: undefined, role: 'anonymous' }
+}
+
+function user(state = initialState.user, action) {
+  switch (action.type) {
+    default:
+      return state
+  }
 }
 
 function favorites(state = initialState.favorites, action) {
@@ -29,6 +37,7 @@ function quotes(state = initialState.quotes, action) {
 }
 
 const rootReducer = combineReducers({
+  user,
   favorites,
   quotes
 });

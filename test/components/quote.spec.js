@@ -20,7 +20,7 @@ describe('Quote Component', () => {
     let { output } = setup()
     let [button, p, span, ul] = output.props.children;
     expect(button.type).toBe('button');
-    expect(button.key).toEqual('enchiridion_4');
+    expect(button.key).toEqual('enchiridion_3');
     expect(p.type).toBe('p');
     expect(span.type).toBe('span');
     expect(ul.type).toBe('ul');
@@ -31,7 +31,7 @@ describe('Quote Component', () => {
     let button = output.props.children[0];
     button.props.onClick();
     expect(props.addFavorite.calls.length).toBe(1);
-    expect(props.addFavorite).toHaveBeenCalledWith('enchiridion_4');
+    expect(props.addFavorite).toHaveBeenCalledWith('enchiridion_3');
   });
 
 });
