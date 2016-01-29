@@ -1,7 +1,7 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils'
-import Quote from '../../src/components/Quote';
+import Quote from '../../client/components/Quote';
 
 function setup() {
   let props = {

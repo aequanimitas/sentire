@@ -1,5 +1,5 @@
 import expect from 'expect';
-import reducer from '../../src/reducers';
+import reducer from '../../client/reducers';
 
 describe('Reducers', () => {
   describe('Favorites', () => {

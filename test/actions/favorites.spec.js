@@ -1,4 +1,4 @@
-import * as actions from '../../src/actions/favorites';
+import * as actions from '../../client/actions/favorites';
 import expect from 'expect';
 
 
