@@ -11,7 +11,7 @@ class Quote extends Component {
   }
 
   render() {
-    let tempId = this.props.quote.book_id + '_' + this.props.quote.chapter;
+    let tempId = this.props.quote.book.name + '_' + this.props.quote.chapter;
     return (
       <div className="quote-container column">
         <button onClick={ this.handleClick.bind(this) }

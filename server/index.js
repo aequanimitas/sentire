@@ -27,10 +27,14 @@ app.get('/api/quotes', function(req, res) {
   var knex = require('knex')(require('../knexfile').development);
   var Bookshelf = require('bookshelf')(knex);
   var author = Bookshelf.Model.extend({ tableName: 'authors' });
+  var book = Bookshelf.Model.extend({ tableName: 'books' });
   var entry = Bookshelf.Model.extend({ 
     tableName: 'entry',
     author: function() {
       return this.belongsTo(author);
+    },
+    book: function() {
+      return this.belongsTo(book);
     }
   });
   var authors = Bookshelf.Collection.extend({ model: author });
@@ -38,7 +42,7 @@ app.get('/api/quotes', function(req, res) {
 
   entries
     .forge()
-    .fetch({withRelated: ['author']})
+    .fetch({withRelated: ['author', 'book']})
     .then(function(collection) {
       res.json({data: collection.toJSON()});
   });
