@@ -5,6 +5,13 @@ var webpack = require('webpack');
 var config = require('../webpack.config');
 var app = express();
 var compiler = webpack(config);
+var bodyParser = require('body-parser');
+
+// place persistence here temporarily
+
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(bodyParser.json());
 
 app.use(webpackDevMiddleware(compiler, { 
   noInfo: true, stats: { colors: true }, publicPath: config.output.publicPath
@@ -17,7 +24,14 @@ app.get('/', function(req, res) {
 });
 
 app.get('/api/quotes', function(req, res) {
-  res.json(require('../test/fixtures/epictetus.json'));
+  var knex = require('knex')(require('../knexfile').development);
+  var Bookshelf = require('bookshelf')(knex);
+  var entry = Bookshelf.Model.extend({ tableName: 'entry' });
+  var entries = Bookshelf.Collection.extend({ model: entry });
+
+  entries.forge().fetch().then(function(collection) {
+    res.json({data: collection.toJSON()});
+  });
 });
 
 app.listen(process.env.PORT || 3000, function() {

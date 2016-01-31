@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     const { actions, quotes} = this.props;
     return (<div className="row">
-        {quotes.map(qt => <Quote quote={qt} key={qt.book + qt.chapter} addFavorite={actions.addFavorite} /> )}
+        {quotes.map(qt => <Quote quote={qt} key={qt.book_id + qt.chapter} addFavorite={actions.addFavorite} /> )}
     </div>);
   }
 }

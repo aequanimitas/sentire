@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 export function receivedQuotes(data) {
   return {
     type: 'RECEIVED_QUOTES',
-    quotes: data
+    quotes: data.data
   }
 }
 

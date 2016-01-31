@@ -7,21 +7,18 @@ class Quote extends Component {
   }
 
   handleClick() {
-    this.props.addFavorite(this.props.quote.book + '_' + this.props.quote.chapter);
+    this.props.addFavorite(this.props.quote.book_id + '_' + this.props.quote.chapter);
   }
 
   render() {
-    let tempId = this.props.quote.book + '_' + this.props.quote.chapter;
+    let tempId = this.props.quote.book_id + '_' + this.props.quote.chapter;
     return (
       <div className="quote-container column">
         <button onClick={ this.handleClick.bind(this) }
                 key={tempId}
                 className="favorite">favorite</button>
-        <p className="quote-text">{this.props.quote.quote}</p>
-        <span className="quote-author">{this.props.quote.author}</span>
-        <ul className="tags">
-          {this.props.quote.tags.map(tag => <li className="tag" key={tag}>{tag}</li>)}
-        </ul>
+        <p className="quote-text">{this.props.quote.text}</p>
+        <span className="quote-author">{this.props.quote.author_id}</span>
       </div>
     );
   }
