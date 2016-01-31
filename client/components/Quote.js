@@ -18,7 +18,7 @@ class Quote extends Component {
                 key={tempId}
                 className="favorite">favorite</button>
         <p className="quote-text">{this.props.quote.text}</p>
-        <span className="quote-author">{this.props.quote.author_id}</span>
+        <span className="quote-author">{this.props.quote.author.name}</span>
       </div>
     );
   }

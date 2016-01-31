@@ -26,11 +26,21 @@ app.get('/', function(req, res) {
 app.get('/api/quotes', function(req, res) {
   var knex = require('knex')(require('../knexfile').development);
   var Bookshelf = require('bookshelf')(knex);
-  var entry = Bookshelf.Model.extend({ tableName: 'entry' });
+  var author = Bookshelf.Model.extend({ tableName: 'authors' });
+  var entry = Bookshelf.Model.extend({ 
+    tableName: 'entry',
+    author: function() {
+      return this.belongsTo(author);
+    }
+  });
+  var authors = Bookshelf.Collection.extend({ model: author });
   var entries = Bookshelf.Collection.extend({ model: entry });
 
-  entries.forge().fetch().then(function(collection) {
-    res.json({data: collection.toJSON()});
+  entries
+    .forge()
+    .fetch({withRelated: ['author']})
+    .then(function(collection) {
+      res.json({data: collection.toJSON()});
   });
 });
 
