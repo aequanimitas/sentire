@@ -16,8 +16,10 @@ class App extends Component {
     const { actions, entries} = this.props;
     const nG = this.regroup();
     return (<div> 
-      {this.regroup().map((group,i) => <div className="row" key={i}> 
-        {group.map(entry => <Entry entry={entry} key={entry.author.name + entry.book.name + entry.chapter} addFavorite={actions.addFavorite} /> )}     
+      {this.regroup().map((group,i) => <div className="row entry-row" key={i}> 
+        {group.map(entry => <Entry entry={entry} 
+                                   key={entry.author.name + entry.book.name + entry.chapter} 
+                                   addFavorite={actions.addFavorite} /> )}     
       </div>)};
     </div>);
   }
