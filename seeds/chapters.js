@@ -1,16 +1,13 @@
-var entries = require('./entries.json');
+var authors = require('./chapters.json');
 
 exports.seed = function(knex, Promise) {
-  var tblName = 'entry';
+  var tblName = 'chapter';
   var tblPromise = [knex(tblName).del()];
-
-  entries.forEach(function(e) {
+  authors.forEach(function(e) {
     tblPromise.push(knex(tblName).insert({
-      text: e.text,
-      chapter_id: e.chapter_id,
+      chapter: e.chapter,
       book_id: e.book_id,
-      author_id: e.author_id,
-      verse: e.verse
+      chapter_title: e.chapter_title ? e.chapter_title : ''
     }));
   });
 
