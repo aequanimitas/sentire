@@ -14,9 +14,10 @@ exports.up = function(knex, Promise) {
       });
     })
     .then(function() {
-      return knex.schema.createTable('quotes', function(tbl) {
+      return knex.schema.createTable('entry', function(tbl) {
         tbl.increments('id');
         tbl.text('text').notNullable();
+        tbl.integer('chapter').notNullable();
         tbl.integer('book_id').notNullable().references('id').inTable('books').onDelete('CASCADE');
         tbl.integer('author_id').notNullable().references('id').inTable('authors').onDelete('CASCADE');
       });
@@ -26,7 +27,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return Promise.resolve()
     .then(function() {
-      return knex.schema.dropTable('quotes'); 
+      return knex.schema.dropTable('entry'); 
     })
     .then(function() {
       return knex.schema.dropTable('books'); 
