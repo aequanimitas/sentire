@@ -15,8 +15,8 @@ class App extends Component {
   }
   render() {
     const { actions, entries} = this.props;
-    return (<div> 
-      {this.regroup(3).map((group,i) => <div className="row entry-row" key={i}> 
+    return (<div className="row entry-row">
+      {this.regroup(4).map((group,i) => <div className="column" key={i}> 
         {group.map(entry => {
             let eKey = entry.author.name + entry.book.name + entry.chapter_id + entry.id
             return <Entry entry={entry} 
