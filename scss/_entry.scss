@@ -1,8 +1,11 @@
 .entry-container {
   .entry-text {
-    max-height: 20rem;
+    max-height: 4.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    &.more {
+      max-height: 60rem;
+    }
   }
 }
 
