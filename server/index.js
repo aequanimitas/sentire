@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/api/quotes', function(req, res) {
+app.get('/api/entries', function(req, res) {
   var knex = require('knex')(require('../knexfile').development);
   var Bookshelf = require('bookshelf')(knex);
   var author = Bookshelf.Model.extend({ tableName: 'authors' });

@@ -1,22 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Quote from '../components/Quote';
-import * as QuoteActions from '../actions/quotes';
+import Entry from '../components/Entry';
+import * as EntryActions from '../actions/entries';
 import * as FavoriteActions from '../actions/favorites';
 
 class App extends Component {
   render() {
-    const { actions, quotes} = this.props;
+    const { actions, entries} = this.props;
     return (<div className="row">
-        {quotes.map(qt => <Quote quote={qt} key={qt.author.name + qt.book.name + qt.chapter} addFavorite={actions.addFavorite} /> )}
+        {entries.map(entry => <Entry entry={entry} key={entry.author.name + entry.book.name + entry.chapter} addFavorite={actions.addFavorite} /> )}
     </div>);
   }
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    quotes: state.quotes
+    entries: state.entries
   }
 }
 

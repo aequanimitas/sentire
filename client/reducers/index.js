@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 const initialState = {
   favorites: [],
-  quotes: [],
+  entries: [],
   user: { id: undefined, role: 'anonymous' }
 }
 
@@ -21,16 +21,16 @@ function favorites(state = initialState.favorites, action) {
         return [ ...state, action.id ];
       }
     case 'DELETE_FAVORITE':
-      return state.filter(quote => quote !== action.id);
+      return state.filter(entry => entry !== action.id);
     default:
       return state;
   }
 }
 
-function quotes(state = initialState.quotes, action) {
+function entries(state = initialState.entries, action) {
   switch(action.type) {
-    case 'RECEIVED_QUOTES':
-      return [...state, ...action.quotes];
+    case 'RECEIVED_ENTRIES':
+      return [...state, ...action.entries];
     default:
       return state;
   }
@@ -39,7 +39,7 @@ function quotes(state = initialState.quotes, action) {
 const rootReducer = combineReducers({
   user,
   favorites,
-  quotes
+  entries
 });
 
 export default rootReducer;

@@ -7,12 +7,12 @@ import { createStore, applyMiddleware } from 'redux';
 import Root from './containers/Root.dev';
 import configureStore from './store/configureStore'
 
-import { requestQuotes, fetchQuotes } from './actions/quotes';
+import { requestEntries, fetchEntries } from './actions/entries';
 
 import fetch from 'isomorphic-fetch';
 
 let store = configureStore();
-store.dispatch(fetchQuotes());
+store.dispatch(fetchEntries());
 let rootElement = document.getElementById('root')
 
 render(
