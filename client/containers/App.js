@@ -6,10 +6,19 @@ import * as EntryActions from '../actions/entries';
 import * as FavoriteActions from '../actions/favorites';
 
 class App extends Component {
+  regroup() {
+    let start = 0, end = 3, grp = [];
+    grp.push(this.props.entries.slice(start, end));
+    grp.push(this.props.entries.slice(end, 5));
+    return grp;
+  }
   render() {
     const { actions, entries} = this.props;
-    return ( <div className="row">
-        {entries.map(entry => <Entry entry={entry} key={entry.author.name + entry.book.name + entry.chapter} addFavorite={actions.addFavorite} /> )}
+    const nG = this.regroup();
+    return (<div> 
+      {this.regroup().map((group,i) => <div className="row" key={i}> 
+        {group.map(entry => <Entry entry={entry} key={entry.author.name + entry.book.name + entry.chapter} addFavorite={actions.addFavorite} /> )}     
+      </div>)};
     </div>);
   }
 }
