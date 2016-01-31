@@ -1,7 +1,7 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils'
-import Quote from '../../client/components/Quote';
+import Entry from '../../client/components/Entry';
 
 function setup() {
   let props = {
@@ -10,12 +10,12 @@ function setup() {
   };
 
   let renderer = TestUtils.createRenderer();
-  renderer.render(<Quote {...props} />);
+  renderer.render(<Entry {...props} />);
   let output = renderer.getRenderOutput();
   return { output, props, renderer }
 }
 
-describe('Quote Component', () => {
+describe('Entry Component', () => {
   it('should render', () => {
     let { output } = setup()
     let [button, p, span, ul] = output.props.children;
