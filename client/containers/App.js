@@ -8,14 +8,13 @@ import * as FavoriteActions from '../actions/favorites';
 class App extends Component {
   render() {
     const { actions, entries} = this.props;
-    return (<div className="row">
+    return ( <div className="row">
         {entries.map(entry => <Entry entry={entry} key={entry.author.name + entry.book.name + entry.chapter} addFavorite={actions.addFavorite} /> )}
     </div>);
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     entries: state.entries
   }

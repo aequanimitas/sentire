@@ -13,7 +13,7 @@ class Entry extends Component {
   render() {
     let tempId = this.props.entry.book.name + '_' + this.props.entry.chapter;
     return (
-      <div className="entry-container column">
+      <div className="entry-container column column-33">
         <button onClick={ this.handleClick.bind(this) }
                 key={tempId}
                 className="favorite">favorite</button>
