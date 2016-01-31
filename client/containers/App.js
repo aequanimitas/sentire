@@ -17,10 +17,13 @@ class App extends Component {
     const nG = this.regroup();
     return (<div> 
       {this.regroup().map((group,i) => <div className="row entry-row" key={i}> 
-        {group.map(entry =>
-            <Entry entry={entry} 
-                   key={entry.author.name + entry.book.name + entry.chapter_id + entry.id}
-                   addFavorite={actions.addFavorite} /> )}     
+        {group.map(entry => {
+            let eKey = entry.author.name + entry.book.name + entry.chapter_id + entry.id
+            return <Entry entry={entry} 
+                   key={eKey}
+                   addFavorite={actions.addFavorite} /> 
+           }
+        )}     
       </div>)};
     </div>);
   }
