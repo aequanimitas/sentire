@@ -17,17 +17,17 @@ function setup() {
 describe('Entry Component', () => {
   it('should render', () => {
     let { output } = setup()
-    let [ text, author, book, seemore, favorite ]  = output.props.children;
+    let [ text, meta ]  = output.props.children;
     expect(text.type).toBe('p');
-    expect(favorite.key).toEqual('enchiridion_3');
-    expect(author.type).toBe('span');
-    expect(book.type).toBe('span');
+    expect(meta.props.children[3].key).toEqual('enchiridion_3');
+    expect(meta.props.children[0].type).toBe('span');
+    expect(meta.props.children[1].type).toBe('span');
   });
 
   it('should just call addFavorite', () => {
     let { output, props } = setup()
-    let favorite = output.props.children[output.props.children.length - 1];
-    favorite.props.onClick();
+    let [ text, meta ] = output.props.children;
+    meta.props.children[3].props.onClick();
     expect(props.addFavorite.calls.length).toBe(1);
     expect(props.addFavorite).toHaveBeenCalledWith('enchiridion_3');
   });
