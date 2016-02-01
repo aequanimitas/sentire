@@ -23,34 +23,7 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/api/entries', function(req, res) {
-  var knex = require('knex')(require('../knexfile').development);
-  var Bookshelf = require('bookshelf')(knex);
-  var author = Bookshelf.Model.extend({ tableName: 'authors' });
-  var book = Bookshelf.Model.extend({ tableName: 'books' });
-  var chapter = Bookshelf.Model.extend({ tableName: 'chapter' });
-  var entry = Bookshelf.Model.extend({ 
-    tableName: 'entry',
-    author: function() {
-      return this.belongsTo(author);
-    },
-    book: function() {
-      return this.belongsTo(book);
-    },
-    chapter: function() {
-      return this.belongsTo(chapter);
-    }
-  });
-  var authors = Bookshelf.Collection.extend({ model: author });
-  var entries = Bookshelf.Collection.extend({ model: entry });
-
-  entries
-    .forge()
-    .fetch({withRelated: ['author', 'book', 'chapter']})
-    .then(function(collection) {
-      res.json({data: collection.toJSON()});
-  });
-});
+app.use('/api', require('./routes/api'));
 
 app.listen(process.env.PORT || 3000, function() {
   console.log("server listening at port " + this.address().port);
