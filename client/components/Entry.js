@@ -24,7 +24,9 @@ class Entry extends Component {
                      className="favorite">favorite</button>
              <p className={entryTextClasses}>{this.props.entry.text}</p>
              <span className="entry-author">{this.props.entry.author.name}</span>
-             <a href="#" onClick={this.seeMore.bind(this)}>see more</a>
+             <a href="#" className="entry-see-more" onClick={this.seeMore.bind(this)}>
+             { this.state.more ? 'Less' : 'More' }
+             </a>
            </div>
   }
 }

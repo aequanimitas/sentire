@@ -1,11 +1,15 @@
-.entry-container {
-  .entry-text {
+.entry-{
+  &container { }
+  &row { margin-bottom: 2rem; }
+  &text {
     max-height: 4.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    &.more {
-      max-height: 60rem;
-    }
+    &.more { max-height: 60rem; }
+  }
+  &see-more {
+    display: inline;
+    float: right;
   }
 }
 
