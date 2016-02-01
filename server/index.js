@@ -28,6 +28,7 @@ app.get('/api/entries', function(req, res) {
   var Bookshelf = require('bookshelf')(knex);
   var author = Bookshelf.Model.extend({ tableName: 'authors' });
   var book = Bookshelf.Model.extend({ tableName: 'books' });
+  var chapter = Bookshelf.Model.extend({ tableName: 'chapter' });
   var entry = Bookshelf.Model.extend({ 
     tableName: 'entry',
     author: function() {
@@ -35,6 +36,9 @@ app.get('/api/entries', function(req, res) {
     },
     book: function() {
       return this.belongsTo(book);
+    },
+    chapter: function() {
+      return this.belongsTo(chapter);
     }
   });
   var authors = Bookshelf.Collection.extend({ model: author });
@@ -42,7 +46,7 @@ app.get('/api/entries', function(req, res) {
 
   entries
     .forge()
-    .fetch({withRelated: ['author', 'book']})
+    .fetch({withRelated: ['author', 'book', 'chapter']})
     .then(function(collection) {
       res.json({data: collection.toJSON()});
   });
