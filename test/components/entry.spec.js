@@ -32,4 +32,8 @@ describe('Entry Component', () => {
     expect(props.addFavorite).toHaveBeenCalledWith('enchiridion_3');
   });
 
+  it.skip('should change text from "More" to "Less"', () => {
+    let { output, props } = setup()
+    let more = output.props.children[output.props.children.length - 2];
+  });
 });
