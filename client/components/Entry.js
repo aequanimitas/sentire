@@ -12,11 +12,11 @@ class Entry extends Component {
   }
 
   handleClick() {
-    this.props.addFavorite(this.props.entry.book_id + '_' + this.props.entry.chapter_id);
+    this.props.addFavorite(this.props.entry.book.name + '_' + this.props.entry.chapter_id);
   }
 
   render() {
-    let tempId = this.props.entry.book.name + '_' + this.props.entry.chapter;
+    let tempId = this.props.entry.book.name + '_' + this.props.entry.chapter.id;
     let entryTextClasses = classnames('entry-text', { more: this.state.more });
     return <div className="entry-container column">
              <p className={entryTextClasses}>{this.props.entry.text}</p>
