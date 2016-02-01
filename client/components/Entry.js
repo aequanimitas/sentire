@@ -19,11 +19,13 @@ class Entry extends Component {
     let tempId = this.props.entry.book.name + '_' + this.props.entry.chapter;
     let entryTextClasses = classnames('entry-text', { more: this.state.more });
     return <div className="entry-container column">
-             <button onClick={ this.handleClick.bind(this) }
-                     key={tempId}
-                     className="favorite">favorite</button>
              <p className={entryTextClasses}>{this.props.entry.text}</p>
-             <span className="entry-author">{this.props.entry.author.name}</span>
+             <span className="entry-author">
+               {this.props.entry.author.name} - &nbsp;
+             </span>
+             <span className="entry-book"> 
+               {this.props.entry.book.name}
+             </span>
              <a href="#" className="entry-see-more" onClick={this.seeMore.bind(this)}>
              { this.state.more ? 'Less' : 'More' }
              </a>

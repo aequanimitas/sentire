@@ -1,15 +1,36 @@
 .entry-{
-  &container { }
+  &container { 
+    border: 1px solid gray;
+    border-radius: 1rem;
+  }
   &row { margin-bottom: 2rem; }
   &text {
-    max-height: 4.5rem;
+    max-height: 4.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    &.more { max-height: 60rem; }
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    &.more { 
+      max-height: 60rem; 
+      font-family: 'Lato', sans-serif;
+    }
+  }
+  &author, &book {
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    display: inline-block;
+    font-size: 1.3rem;
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
   &see-more {
     display: inline;
     float: right;
+    font-size: 1.3rem;
+    position: relative;
+    top: 0.3333rem;
   }
 }
 
