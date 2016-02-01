@@ -39,6 +39,13 @@
   &favorite {
     margin-right: 0.5rem;
   }
+  &meta {
+  }
+  &interact {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 }
 
 .tags {
