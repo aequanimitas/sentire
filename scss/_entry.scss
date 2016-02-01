@@ -25,12 +25,19 @@
       text-transform: uppercase;
     }
   }
-  &see-more {
-    display: inline;
+  &see-more, &favorite{
+    display: inline-block;
+    font-weight: 600;
     float: right;
     font-size: 1.3rem;
     position: relative;
     top: 0.3333rem;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+  &favorite {
+    margin-right: 0.5rem;
   }
 }
 

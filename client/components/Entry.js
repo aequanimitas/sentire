@@ -29,6 +29,9 @@ class Entry extends Component {
              <a href="#" className="entry-see-more" onClick={this.seeMore.bind(this)}>
              { this.state.more ? 'Less' : 'More' }
              </a>
+             <a href="#" onClick={ this.handleClick.bind(this) }
+                     key={tempId}
+                     className="entry-favorite">&#8902;</a>
            </div>
   }
 }
