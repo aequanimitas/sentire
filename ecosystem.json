@@ -21,9 +21,12 @@
   "vizion"           : false, // enable/disable vizion features (versioning control)
 
   // Default environment variables that will be injected in any environment and at any start
-  "env": {
-    //"NODE_ENV": "production",
-    //"AWESOME_SERVICE_API_TOKEN": "xxx"
+  "env_development": {
+    "NODE_ENV": "development",
+    "PORT": 3000
+  },
+  "env_production": {
+    "NODE_ENV": "production",
     "PORT": 3000
   },
   "env_*" : {
