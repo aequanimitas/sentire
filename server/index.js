@@ -10,9 +10,7 @@ var bodyParser = require('body-parser');
 // place persistence here temporarily
 
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(bodyParser.json());
-
 app.use(webpackDevMiddleware(compiler, { 
   noInfo: true, stats: { colors: true }, publicPath: config.output.publicPath
 }));
