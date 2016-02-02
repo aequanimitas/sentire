@@ -28,7 +28,10 @@ router.route('/entries')
       .fetch({withRelated: ['author', 'book', 'chapter']})
       .then(function(collection) {
         res.json({data: collection.toJSON()});
-      });
+      })
+      .catch(function(err) {
+        res.status(500).json({error: true, data: {message: 'server error'}});
+      })
   });
 
 router.route('/entries/author/:id')
@@ -52,7 +55,10 @@ router.route('/entries/author/:id')
       .fetchAll({withRelated: ['author', 'book', 'chapter']})
       .then(function(entries) {
         res.json({error: false, data: entries.toJSON()});
-      });
+      })
+      .catch(function(err) {
+        res.status(500).json({error: true, data: {message: 'end path should be numeric'}});
+      })
   });
 
 module.exports = router;
