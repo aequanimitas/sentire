@@ -2,6 +2,8 @@
   &container { 
     border: 1px solid gray;
     border-radius: 1rem;
+    margin-bottom: 1.67rem;
+    padding: 0 1rem;
   }
   &row { margin-bottom: 2rem; }
   &text {
@@ -11,6 +13,7 @@
     font-family: 'Lato', sans-serif;
     font-style: italic;
     font-weight: 400;
+    margin-bottom: 0.6rem;
     &.more { 
       max-height: 60rem; 
       font-family: 'Lato', sans-serif;
