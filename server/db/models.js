@@ -1,4 +1,4 @@
-var knex = require('knex')(require('../knexfile').development);
+var knex = require('knex')(require('../../knexfile').development);
 var Bookshelf = require('bookshelf')(knex);
 
 var author = Bookshelf.Model.extend({ tableName: 'authors' });

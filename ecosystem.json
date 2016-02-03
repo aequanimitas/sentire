@@ -19,7 +19,7 @@
   "exec_mode"        : "fork",
   "autorestart"      : false, // enable/disable automatic restart when an app crashes or exits
   "vizion"           : false, // enable/disable vizion features (versioning control)
-
+  "watch": ["server"],
   // Default environment variables that will be injected in any environment and at any start
   "env_development": {
     "NODE_ENV": "development",
