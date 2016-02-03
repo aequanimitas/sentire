@@ -18,7 +18,7 @@ class App extends Component {
     return (<div className="row entry-row">
       {this.regroup(4).map((group,i) => <div className="column" key={i}> 
         {group.map(entry => {
-            let eKey = entry.author.name + entry.book.name + entry.chapter_id + entry.id
+            let eKey = entry.author + entry.id + entry.chapter;
             return <Entry entry={entry} 
                    key={eKey}
                    addFavorite={actions.addFavorite} /> 

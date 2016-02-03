@@ -12,20 +12,23 @@ class Entry extends Component {
   }
 
   handleClick() {
-    this.props.addFavorite(this.props.entry.book.name + '_' + this.props.entry.chapter_id);
+    let entry = Object.assign({}, this.props.entry);
+    let key = 'favorite_' + entry.id;
+    this.props.addFavorite(key);
   }
 
   render() {
-    let tempId = this.props.entry.book.name + '_' + this.props.entry.chapter.id;
+    let entry = this.props.entry;
+    let tempId = 'entry' + entry.id;
     let entryTextClasses = classnames('entry-text', { more: this.state.more });
     return <div className="entry-container column">
-             <p className={entryTextClasses}>{this.props.entry.text}</p>
+             <p className={entryTextClasses}>{entry.text}</p>
              <div className="entry-meta">
-               <span className="entry-author">
-                 {this.props.entry.author.name} - &nbsp;
+               <span className="entry-author" key={entry.chapter + entry.id + 'author'}>
+                 {entry.author} - &nbsp;
                </span>
-               <span className="entry-book"> 
-                 {this.props.entry.book.name}
+               <span className="entry-book" key={entry.chapter + entry.id + 'book'}>
+                 {entry.bookTitle}
                </span>
                <a href="#" className="entry-see-more" onClick={this.seeMore.bind(this)}>
                  { this.state.more ? 'Less' : 'More' }

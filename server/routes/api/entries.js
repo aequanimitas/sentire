@@ -3,22 +3,27 @@ var models = require('../../db/models');
 var router = express.Router();
 
 router.route('/').get(function(req, res) {
-  models.entries
-    .forge()
-    .fetch({withRelated: ['author', 'book', 'chapter']})
+  models.knex('entry')
+    .join('authors', 'authors.id', 'entry.author_id')
+    .join('books', 'books.id', 'entry.book_id')
+    .join('chapter', 'chapter.id', 'entry.chapter_id')
+    .select([
+        'authors.name as author', 
+        'entry.text',
+        'books.name as bookTitle',
+        'chapter.chapter_title as chapterTitle',
+        'chapter.chapter as chapter',
+        'entry.id as id'
+    ])
     .then(function(collection) {
-      res.json({data: collection.toJSON()});
-    })
-    .catch(function(err) {
-      console.log('inside root');
-      res.status(500).json({error: true, data: {message: 'server error'}});
-    })
+      res.json({data: collection});
+    });
 });
 
 router.route('/author/:name').get(function(req, res) {
-  models.knex
-    .from('entry')
-    .innerJoin('authors', 'entry.author_id', 'authors.id')
+  models.knex('authors')
+    .join('entry', 'authors.id', 'entry.author_id')
+    .select('authors.name', 'entry.text')
     .where('authors.name', '=', req.params.name)
     .then(function(entries) {
       if (entries.length < 1) {

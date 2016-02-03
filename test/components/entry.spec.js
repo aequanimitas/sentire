@@ -19,7 +19,7 @@ describe('Entry Component', () => {
     let { output } = setup()
     let [ text, meta ]  = output.props.children;
     expect(text.type).toBe('p');
-    expect(meta.props.children[3].key).toEqual('enchiridion_3');
+    expect(meta.props.children[3].key).toEqual('entry1');
     expect(meta.props.children[0].type).toBe('span');
     expect(meta.props.children[1].type).toBe('span');
   });
@@ -29,7 +29,7 @@ describe('Entry Component', () => {
     let [ text, meta ] = output.props.children;
     meta.props.children[3].props.onClick();
     expect(props.addFavorite.calls.length).toBe(1);
-    expect(props.addFavorite).toHaveBeenCalledWith('enchiridion_3');
+    expect(props.addFavorite).toHaveBeenCalledWith('favorite_1');
   });
 
   it.skip('should change text from "More" to "Less"', () => {
