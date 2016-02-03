@@ -20,11 +20,11 @@ router.route('/').get(function(req, res) {
     });
 });
 
-router.route('/author/:name').get(function(req, res) {
+router.route('/author').get(function(req, res) {
   models.knex('authors')
     .join('entry', 'authors.id', 'entry.author_id')
     .select('authors.name', 'entry.text')
-    .where('authors.name', '=', req.params.name)
+    .where('authors.name', '=', req.query.name)
     .then(function(entries) {
       if (entries.length < 1) {
         console.log('reached');
