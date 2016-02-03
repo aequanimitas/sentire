@@ -23,5 +23,6 @@ module.exports = {
  book : book,
  chapter : chapter,
  entry : entry,
- entries: entries
+ entries: entries,
+ knex: knex
 }

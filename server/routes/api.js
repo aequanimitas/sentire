@@ -2,6 +2,8 @@ var express = require('express');
 var models = require('../models');
 var router = express.Router();
 
+console.log(router.use);
+
 router.route('/entries')
   .get(function(req, res) {
     models.entries
@@ -15,16 +17,15 @@ router.route('/entries')
       })
   });
 
-router.route('/entries/author/:id')
+router.route('/entries/author/:name')
   .get(function(req, res) {
-    models.entry.query('where', 'author_id', '=', req.params.id)
-      .fetchAll({withRelated: ['author', 'book', 'chapter']})
-      .then(function(entries) {
-        res.json({error: false, data: entries.toJSON()});
-      })
-      .catch(function(err) {
-        res.status(500).json({error: true, data: {message: 'end path should be numeric'}});
-      })
+    models.knex
+      .from('entry')
+      .innerJoin('authors', 'entry.author_id', 'authors.id')
+      .where('authors.name', '=', req.params.name)
+      .then(function(entries) { 
+        res.json({data: entries});
+      });
   });
 
 module.exports = router;
