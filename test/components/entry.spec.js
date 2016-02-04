@@ -19,9 +19,9 @@ describe('Entry Component', () => {
     let { output } = setup()
     let [ text, meta ]  = output.props.children;
     expect(text.type).toBe('p');
-    let fave = meta.props.children[4];
-    let author = meta.props.children[1];
-    let book = meta.props.children[2];
+    let fave = meta.props.children[1].props.children[0];
+    let author = meta.props.children[0].props.children[1];
+    let book = meta.props.children[0].props.children[2];
     expect(fave.key).toEqual('entry1');
     expect(author.type).toBe('span');
     expect(book.type).toBe('span');
@@ -30,7 +30,7 @@ describe('Entry Component', () => {
   it('should just call addFavorite', () => {
     let { output, props } = setup()
     let [ text, meta ] = output.props.children;
-    let fave = meta.props.children[4];
+    let fave = meta.props.children[1].props.children[0];
     fave.props.onClick();
     expect(props.addFavorite.calls.length).toBe(1);
     expect(props.addFavorite).toHaveBeenCalledWith('favorite_1');
