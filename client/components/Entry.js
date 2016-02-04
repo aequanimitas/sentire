@@ -26,19 +26,24 @@ class Entry extends Component {
              <p className={entryTextClasses}>
                {this.state.more ? entry.text : entry.initialText}
              </p>
-             <div className="entry-meta">&nbsp;-&nbsp;
+             <div className="entry-meta">
+               <div className="entry-meta-info">&nbsp;-&nbsp;
+               
                <span className="entry-author" key={entry.chapter + entry.id + 'author'}>
                  {entry.author}, &nbsp;
                </span>
                <span className="entry-book" key={entry.chapter + entry.id + 'book'}>
                  {entry.bookTitle}
                </span>
-               <a href="#" className="entry-see-more" onClick={this.seeMore.bind(this)}>
-                 { this.state.more ? 'Less' : 'More' }
-               </a>
-               <a href="#" onClick={ this.handleClick.bind(this) }
-                       key={tempId}
-                       className="entry-favorite">&#8902;</a>
+               </div>
+               <div className="entry-meta-actions">
+                 <a href="#" onClick={ this.handleClick.bind(this) }
+                         key={tempId}
+                         className="entry-favorite">&#8902;</a>
+                 <a href="#" className="entry-see-more" onClick={this.seeMore.bind(this)}>
+                   { this.state.more ? 'Less' : 'More' }
+                 </a>
+                </div>
              </div>
              <div className="entry-interact">
              </div>
