@@ -18,14 +18,17 @@ class Entry extends Component {
   }
 
   render() {
-    let entry = this.props.entry;
+    let entry = Object.assign({}, this.props.entry);
+    entry.initialText = entry.text.slice(0, entry.text.indexOf('.') + 1);
     let tempId = 'entry' + entry.id;
     let entryTextClasses = classnames('entry-text', { more: this.state.more });
     return <div className="entry-container column">
-             <p className={entryTextClasses}>{entry.text}</p>
-             <div className="entry-meta">
+             <p className={entryTextClasses}>
+               {this.state.more ? entry.text : entry.initialText}
+             </p>
+             <div className="entry-meta">&nbsp;-&nbsp;
                <span className="entry-author" key={entry.chapter + entry.id + 'author'}>
-                 {entry.author} - &nbsp;
+                 {entry.author}, &nbsp;
                </span>
                <span className="entry-book" key={entry.chapter + entry.id + 'book'}>
                  {entry.bookTitle}
