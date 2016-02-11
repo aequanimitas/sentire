@@ -29,5 +29,5 @@ app.get('/', function(req, res) {
 app.use('/api', require('./routes/api'));
 
 app.listen(process.env.PORT || 3000, function() {
-  console.log("server listening at port " + this.address().port);
+  console.log('server listening at port ' + this.address().port);
 });

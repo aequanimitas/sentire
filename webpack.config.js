@@ -1,5 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
+var ROOT_PATH = path.resolve(__dirname);
+var CLIENT_PATH = path.resolve(ROOT_PATH, 'client');
+
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
