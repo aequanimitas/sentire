@@ -2,8 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
-// place persistence here temporarily
-
+app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
