@@ -1,3 +1,3 @@
 module.exports = {
- knex: require('knex')(require('../../knexfile').development)
+  knex: require('knex')(require('../knexfile').development)
 }
