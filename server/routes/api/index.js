@@ -1,5 +1,5 @@
 var express = require('express');
-var models = require('../../db/models');
+var db = require('../../db');
 var router = express.Router();
 
 router.use('/entries', require('./entries'));
