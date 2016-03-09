@@ -1,7 +1,5 @@
 .entry-{
   &container { 
-    border: 1px solid gray;
-    border-radius: 1rem;
     margin-bottom: 1.67rem;
     padding: 0 1rem;
   }
@@ -12,7 +10,7 @@
     text-overflow: ellipsis;
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 0.6rem;
     &.more { 
       max-height: 60rem; 
@@ -34,6 +32,7 @@
     font-size: 1.3rem;
     position: relative;
     top: 0.3333rem;
+    color: #1F4788;
     &::first-letter {
       text-transform: uppercase;
     }
