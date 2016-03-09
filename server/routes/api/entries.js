@@ -4,16 +4,13 @@ var router = express.Router();
 
 router.route('/').get(function(req, res) {
   models.knex('entry')
-    .join('authors', 'authors.id', 'entry.author_id')
-    .join('books', 'books.id', 'entry.book_id')
-    .join('chapter', 'chapter.id', 'entry.chapter_id')
+    .join('author', 'author.authorId', 'entry.authorIdFk')
+    .join('book', 'book.bookId', 'entry.bookIdFk')
     .select([
-        'authors.name as author', 
+        'author.name as author', 
         'entry.text',
-        'books.name as bookTitle',
-        'chapter.chapter_title as chapterTitle',
-        'chapter.chapter as chapter',
-        'entry.id as id'
+        'book.name as bookTitle',
+        'entry.entryId as id'
     ])
     .then(function(collection) {
       res.json({data: collection});
