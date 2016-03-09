@@ -10,18 +10,18 @@
     max-height: 10rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-family: 'Lato', sans-serif;
-    font-style: italic;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
     font-weight: 400;
     margin-bottom: 0.6rem;
     &.more { 
       max-height: 60rem; 
-      font-family: 'Lato', sans-serif;
+      font-family: 'Open Sans', sans-serif;
     }
   }
   &author, &book {
-    font-family: 'Lato', sans-serif;
-    font-weight: 800;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     display: inline-block;
     font-size: 1.3rem;
     &::first-letter {
