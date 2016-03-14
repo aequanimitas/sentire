@@ -68,6 +68,8 @@
     "test": "mocha --compilers js:babel-core/register --recursive --require test/utils/dom.js",
     "test:w": "npm run test -- --watch",
     "start": "node server",
-    "start:dev": "NODE_ENV=development node server"
+    "start:dev": "NODE_ENV=development node server",
+    "test:new": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register",
+    "test:new:w": "npm run test:new -- --watch"
   }
 }
