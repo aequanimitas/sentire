@@ -36,9 +36,10 @@ describe('Entry Component', () => {
     expect(props.addFavorite).toHaveBeenCalledWith('favorite_1');
   });
 
-  it.skip('should change text from "More" to "Less"', () => {
+  it('should change text from "More" to "Less"', () => {
     let { output, props } = setup()
     let more = output.props.children[1].props.children[1].props.children[1]
-    more.props.onClick();
+    more.simulate('click');
+    console.log(more);
   });
 });

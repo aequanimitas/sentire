@@ -5,6 +5,7 @@ class Entry extends Component {
   constructor(props) {
     super(props);
     this.state = { more: false };
+    this.seeMore = this.seeMore.bind(this);
   }
 
   seeMore() {
@@ -40,7 +41,7 @@ class Entry extends Component {
                  <a href="#" onClick={ this.handleClick.bind(this) }
                          key={tempId}
                          className="entry-favorite">&#8902;</a>
-                 <a href="#" className="entry-see-more" onClick={this.seeMore.bind(this)}>
+                 <a href="#" className="entry-see-more" onClick={this.seeMore}>
                    { this.state.more ? 'Less' : 'More' }
                  </a>
                 </div>
