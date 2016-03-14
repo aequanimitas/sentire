@@ -38,6 +38,7 @@ describe('Entry Component', () => {
 
   it.skip('should change text from "More" to "Less"', () => {
     let { output, props } = setup()
-    let more = output.props.children[output.props.children.length - 2];
+    let more = output.props.children[1].props.children[1].props.children[1]
+    more.props.onClick();
   });
 });
