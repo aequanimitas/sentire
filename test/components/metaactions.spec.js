@@ -4,12 +4,18 @@ import { shallow } from 'enzyme'
 import MetaAction from '../../client/components/MetaActions'
 
 function setup(value = 0) {
+  const props = {
+    more: false,
+    seeMore: () => {}
+  }
+
   const component = shallow(
-    <MetaAction />
+    <MetaAction {...props} />
   );
   return {
     component: component,
-    more: component.find('a')
+    more: component.find('a'),
+    props: props
   }
 }
 
@@ -18,10 +24,13 @@ describe('Meta Action Component', () => {
     const { more } = setup()
     expect(more.text()).toMatch(/^More/);
   });
-  it('should display less', () => {
-    const { component } = setup()
+
+  it('callback fn should be called', () => {
+    let { props, component } = setup()
+    let spy = expect.spyOn(props, 'seeMore');
     component.find('a').simulate('click');
     component.update(); 
-    expect(component.find('a').text()).toMatch(/^Less/);
+    expect(spy).toHaveBeenCalled();
+    // expect(component.find('a').text()).toMatch(/^Less/); transfer this test to entry
   });
 });

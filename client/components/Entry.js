@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
+import MetaAction from './MetaActions';
+
 class Entry extends Component {
   constructor(props) {
     super(props);
@@ -37,14 +39,7 @@ class Entry extends Component {
                  {entry.bookTitle}
                </span>
                </div>
-               <div className="entry-meta-actions">
-                 <a href="#" onClick={ this.handleClick.bind(this) }
-                         key={tempId}
-                         className="entry-favorite">&#8902;</a>
-                 <a href="#" className="entry-see-more" onClick={this.seeMore}>
-                   { this.state.more ? 'Less' : 'More' }
-                 </a>
-                </div>
+	       <MetaAction seeMore={this.seeMore} more={this.state.more} />
              </div>
              <div className="entry-interact">
              </div>
