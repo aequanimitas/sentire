@@ -1,4 +1,4 @@
-import expect from 'expect'
+import expect, { createSpy } from 'expect'
 import React from 'react'
 import { shallow } from 'enzyme'
 import MetaAction from '../../client/components/MetaActions'
@@ -6,7 +6,7 @@ import MetaAction from '../../client/components/MetaActions'
 function setup(value = 0) {
   const props = {
     more: false,
-    seeMore: () => {}
+    seeMore: createSpy()
   }
 
   const component = shallow(
@@ -27,10 +27,9 @@ describe('Meta Action Component', () => {
 
   it('callback fn should be called', () => {
     let { props, component } = setup()
-    let spy = expect.spyOn(props, 'seeMore');
     component.find('a').simulate('click');
     component.update(); 
-    expect(spy).toHaveBeenCalled();
+    expect(props.seeMore).toHaveBeenCalled();
     // expect(component.find('a').text()).toMatch(/^Less/); transfer this test to entry
   });
 });
