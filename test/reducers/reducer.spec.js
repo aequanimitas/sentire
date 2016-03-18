@@ -4,7 +4,7 @@ import reducer from '../../client/reducers';
 describe('Reducers', () => {
   describe('Favorites', () => {
     it('should return initial state if state is undefined', () => {
-      expect(reducer(undefined, {})).toEqual({
+      expect(reducer({favorites: [], entries: []}, {})).toEqual({
           favorites: [],
           entries: [],
           user: { id: undefined, role: 'anonymous' }
