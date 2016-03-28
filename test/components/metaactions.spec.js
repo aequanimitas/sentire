@@ -24,12 +24,4 @@ describe('Meta Action Component', () => {
     const { more } = setup()
     expect(more.text()).toMatch(/^More/);
   });
-
-  it('callback fn should be called', () => {
-    let { props, component } = setup()
-    component.find('a').simulate('click');
-    component.update(); 
-    expect(props.seeMore).toHaveBeenCalled();
-    // expect(component.find('a').text()).toMatch(/^Less/); transfer this test to entry
-  });
 });

@@ -31,7 +31,6 @@ class Entry extends Component {
              </p>
              <div className="entry-meta">
                <div className="entry-meta-info">&nbsp;-&nbsp;
-               
                <span className="entry-author" key={entry.chapter + entry.id + 'author'}>
                  {entry.author}, &nbsp;
                </span>
