@@ -27,10 +27,9 @@ router.route('/').get(function(req, res) {
   models.knex('book')
     .join('entry', 'book.bookId', 'entry.bookIdFk')
     .select('book.name', 'entry.text')
-    .where('book.name', '=', req.query.book)
+    .where('book.name', '~*', req.query.book)
     .then(function(entries) {
       if (entries.length < 1) {
-	      console.log('here');
         res.status(204).json({
           error: false, 
           data: {

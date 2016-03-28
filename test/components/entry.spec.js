@@ -46,7 +46,7 @@ describe('Entry Component', () => {
       expect(author.hasClass('entry-link')).toBe(true);
     }); 
 
-    it('entry author should be a link', () => {
+    it('entry author should have a href', () => {
       let { author } = setup();
       expect(author.prop('href')).toEqual('/api/entries?author=epictetus');
     })
@@ -55,5 +55,15 @@ describe('Entry Component', () => {
       let { book } = setup();
       expect(book.type()).toEqual('a');
     }); 
+
+    it('entry book should have class entry-link', () => {
+      let { book } = setup();
+      expect(book.hasClass('entry-link')).toBe(true);
+    })
+
+    it('entry book should have href', () => {
+      let { book } = setup();
+      expect(book.prop('href')).toEqual('/api/entries?book=Enchiridion');
+    })
   });
 });

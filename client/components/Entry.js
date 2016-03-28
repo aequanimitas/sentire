@@ -34,7 +34,8 @@ class Entry extends Component {
          	  key={entry.chapter + entry.id + 'author'}>
                  {entry.author}, &nbsp;
                </a>
-               <a className="entry-book entry-link" key={entry.chapter + entry.id + 'book'}>
+               <a href={"/api/entries?book="+entry.bookTitle }
+                  className="entry-book entry-link" key={entry.chapter + entry.id + 'book'}>
                  {entry.bookTitle}
                </a>
                </div>
