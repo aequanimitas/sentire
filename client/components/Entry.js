@@ -29,12 +29,14 @@ class Entry extends Component {
              </p>
              <div className="entry-meta">
                <div className="entry-meta-info">&nbsp;-&nbsp;
-               <span className="entry-author" key={entry.chapter + entry.id + 'author'}>
+               <a href={"/api/entries?author="+entry.author }
+	          className="entry-author entry-link" 
+         	  key={entry.chapter + entry.id + 'author'}>
                  {entry.author}, &nbsp;
-               </span>
-               <span className="entry-book" key={entry.chapter + entry.id + 'book'}>
+               </a>
+               <a className="entry-book entry-link" key={entry.chapter + entry.id + 'book'}>
                  {entry.bookTitle}
-               </span>
+               </a>
                </div>
                <div className="entry-meta-actions">
                  <a href="#" className="entry-see-more" onClick={this.seeMore}>
