@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 
-app.use('/api', require('./server/routes/api'));
+app.use('/api', require('./routes'));
 
 app.listen(process.env.PORT || 3000, function() {
   console.log('server listening at port ' + this.address().port);
