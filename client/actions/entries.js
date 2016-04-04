@@ -21,5 +21,8 @@ export function fetchEntries() {
     return fetch('/api/entries')
       .then(data => data.json())
       .then(data => dispatch(receivedEntries(data)))
+      .catch(err => {
+        console.log(err);
+      });
   }
 }
