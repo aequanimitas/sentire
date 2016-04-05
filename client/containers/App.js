@@ -2,8 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Entry from '../components/Entry';
-import * as EntryActions from '../actions/entries';
-import * as FavoriteActions from '../actions/favorites';
 
 class App extends Component {
   regroup(groupBy) {
@@ -14,14 +12,13 @@ class App extends Component {
     return group;
   }
   render() {
-    const { actions, entries} = this.props;
+    const { entries } = this.props;
     return <div className="row entry-row">
       {this.regroup(4).map((group,i) => <div className="column" key={i}> 
         {group.map(entry => {
             let eKey = entry.author + entry.id + entry.chapter;
             return <Entry entry={entry} 
-                   key={eKey}
-                   addFavorite={actions.addFavorite} /> 
+                   key={eKey} /> 
            }
         )}     
       </div>)}
@@ -35,10 +32,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(FavoriteActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

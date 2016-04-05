@@ -52,8 +52,7 @@ class Entry extends Component {
 }
 
 Entry.propTypes = {
-  entry: PropTypes.object.isRequired,
-  addFavorite: PropTypes.func.isRequired
+  entry: PropTypes.object.isRequired
 }
 
 export default Entry;
