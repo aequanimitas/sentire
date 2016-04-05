@@ -31,11 +31,11 @@ class Entry extends Component {
                <div className="entry-meta-info">&nbsp;-&nbsp;
                <a href={"/api/entries?author="+entry.author }
 	          className="entry-author entry-link" 
-         	  key={entry.chapter + entry.id + 'author'}>
+         	  key={entry.id + 'author'}>
                  {entry.author}, &nbsp;
                </a>
                <a href={"/api/entries?book="+entry.bookTitle }
-                  className="entry-book entry-link" key={entry.chapter + entry.id + 'book'}>
+                  className="entry-book entry-link" key={entry.id + 'book'}>
                  {entry.bookTitle}
                </a>
                </div>
