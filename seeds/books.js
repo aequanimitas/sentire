@@ -18,8 +18,17 @@ exports.seed = function(knex, Promise) {
     knex('author').select('authorId').where('name', '=', 'seneca').then(function(d) {
       var book = {
         name: 'Moral Letters to Lucilius',
-	bookId: uuid.v4(),
-	authorIdFk: d[0].authorId
+	      bookId: uuid.v4(),
+	      authorIdFk: d[0].authorId
+      };
+
+      return knex.insert(book).into('book');
+    }),
+    knex('author').select('authorId').where('name', '=', 'marcus aurelius').then(function(d) {
+      var book = {
+        name: 'The Meditations',
+	      bookId: uuid.v4(),
+	      authorIdFk: d[0].authorId
       };
 
       return knex.insert(book).into('book');
