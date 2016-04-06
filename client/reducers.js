@@ -2,22 +2,13 @@ import { combineReducers } from 'redux';
 const initialState = {
   favorites: [],
   entries: [],
-  user: { id: undefined, role: 'anonymous' },
-  more: { more: false }
+  user: { id: undefined, role: 'anonymous' }
 }
 
 function user(state = initialState.user, action) {
   switch (action.type) {
     default:
       return state
-  }
-}
-
-function moreLess(state = initialState.more, action) {
-  if (action.type === 'SHOW_MORE' || action.type === 'SHOW_LESS') {
-    return 
-  } else {
-    return state;
   }
 }
 

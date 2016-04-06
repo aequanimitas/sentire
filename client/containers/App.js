@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import Entry from '../components/Entry';
 
 class App extends Component {
-
   render() {
     return <div>
       {this.props.entries.map(entry => {
