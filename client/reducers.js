@@ -1,8 +1,25 @@
 import { combineReducers } from 'redux';
+
 const initialState = {
   favorites: [],
   entries: [],
-  user: { id: undefined, role: 'anonymous' }
+  user: { id: undefined, role: 'anonymous' },
+  entryCount: {
+    startEntry: 0,
+    endEntry: 30
+  }
+}
+
+function entryCount(state = initialState.entryCount, action) {
+  switch(action.type) {
+    case 'INCREASE_OFFSET_LIMIT':
+      return {
+        startEntry: action.entryCount.startEntry + 30,
+        endEntry: action.entryCount.endEntry + 30
+      }
+    default:
+      return state
+  }
 }
 
 function user(state = initialState.user, action) {
@@ -39,7 +56,8 @@ function entries(state = initialState.entries, action) {
 const rootReducer = combineReducers({
   user,
   favorites,
-  entries
+  entries,
+  entryCount
 });
 
 export default rootReducer;

@@ -5,7 +5,7 @@ import Entry from '../components/Entry';
 
 class App extends Component {
   render() {
-    return <div>
+    return <div className={'row'}>
       {this.props.entries.map(entry => {
         return <Entry entry={entry} key={entry.id} />
       })}
