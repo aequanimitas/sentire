@@ -10,12 +10,14 @@ const initialState = {
   }
 }
 
+const ENTRY_INCREMENTS = 32
+
 function entryCount(state = initialState.entryCount, action) {
   switch(action.type) {
     case 'INCREASE_OFFSET_LIMIT':
       return {
-        startEntry: action.entryCount.startEntry + 30,
-        endEntry: action.entryCount.endEntry + 30
+        startEntry: action.entryCount.startEntry + ENTRY_INCREMENTS,
+        endEntry: action.entryCount.endEntry + ENTRY_INCREMENTS
       }
     default:
       return state
