@@ -12,10 +12,12 @@ import { requestEntries, fetchEntries } from './actions';
 import fetch from 'isomorphic-fetch';
 
 let store = configureStore();
-store.dispatch(fetchEntries());
-let rootElement = document.getElementById('root')
+store.dispatch(fetchEntries()).then(() => {
+  let rootElement = document.getElementById('root')
 
-render(
-  <Root store={store}></Root>,
-  rootElement
-);
+  render(
+    <Root store={store}></Root>,
+    rootElement
+  )
+})
+
