@@ -6,17 +6,11 @@ import lodash from 'lodash'
 
 export class App extends Component {
   render() {
-    let { entries } = this.props
+    let { entries, single } = this.props
     let columnedEntries = lodash.chunk(entries, 3)
     return <div className="column">
-      {columnedEntries.map(colEntries => {
-        return <div className="row">
-          { colEntries.map(entry => {
-            return <Entry entry={entry} key={entry.id} />
-          })}
-        </div>
-      })}
-    </div>
+             <Entry entry={entries[0]} key={entries[0].id} />
+           </div>
   }
 }
 
@@ -25,4 +19,5 @@ function mapStateToProps(state) {
     entries: state.entries
   }
 }
+
 export const AppConnect = connect(mapStateToProps)(App);

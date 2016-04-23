@@ -2,16 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
 class Entry extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { more: false };
-    this.seeMore = this.seeMore.bind(this);
-  }
-
-  seeMore() {
-    this.setState({ more: this.state.more ? false : true });
-  }
-
   handleClick() {
     let entry = Object.assign({}, this.props.entry);
     let key = 'favorite_' + entry.id;
@@ -22,28 +12,21 @@ class Entry extends Component {
     let entry = Object.assign({}, this.props.entry);
     entry.initialText = entry.text.slice(0, entry.text.indexOf('.') + 1);
     let tempId = 'entry' + entry.id;
-    let entryTextClasses = classnames('entry-text', { more: this.state.more });
+    let entryTextClasses = classnames('entry-text')
     return <div className="entry-container column">
              <p className={entryTextClasses}>
-               {this.state.more ? entry.text : entry.initialText}
+               {entry.text}
              </p>
              <div className="entry-meta">
                <div className="entry-meta-info">&nbsp;-&nbsp;
-               <a href={"/api/entries?author="+entry.author }
-	          className="entry-author entry-link" 
-         	  key={entry.id + 'author'}>
-                 {entry.author}, &nbsp;
-               </a>
-               <a href={"/api/entries?book="+entry.bookTitle }
-                  className="entry-book entry-link" key={entry.id + 'book'}>
+               <span className="entry-author entry-link" 
+         	           key={entry.id + 'author'}>
+                     {entry.author}, &nbsp;
+               </span>
+               <span className="entry-book entry-link" key={entry.id + 'book'}>
                  {entry.bookTitle}
-               </a>
+               </span>
                </div>
-               <div className="entry-meta-actions">
-                 <a href="#" className="entry-see-more" onClick={this.seeMore}>
-                   { this.state.more ? 'Less' : 'More' }
-                 </a>
-                </div>
              </div>
              <div className="entry-interact">
              </div>
