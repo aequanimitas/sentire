@@ -67,12 +67,10 @@
   },
   "homepage": "https://github.com/aequanimitas/sentire#readme",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --recursive --require test/utils/dom.js",
-    "test:w": "npm run test -- --watch",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server",
     "start:dev": "NODE_ENV=development node server",
-    "test:new": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require test/utils/dom.js",
-    "test:new:w": "npm run test:new -- --watch"
+    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register", 
+    "test:w": "npm run test -- --watch"
   }
 }
