@@ -1,7 +1,7 @@
 import expect from 'expect';
 import reducer from '../../client/reducers';
 
-describe('Reducers', () => {
+describe.skip('Reducers', () => {
   describe('Favorites', () => {
     it('should return initial state if state is undefined', () => {
       expect(reducer({favorites: [], entries: []}, {})).toEqual({

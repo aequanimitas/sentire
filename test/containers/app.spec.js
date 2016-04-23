@@ -1,7 +1,24 @@
 import React from 'react';
 import expect from 'expect';
-import TestUtils from 'react-addons-test-utils'
+import { Provider } from 'react-redux';
+import { shallow } from 'enzyme';
+import { App } from '../../client/containers/App';
+import configureStore from '../../client/store/configureStore'
 
-import App from '../../client/containers/App';
+function setup() {
+  const store = configureStore();
+  const component = shallow(
+      <App />
+  )
 
-describe.skip('App container', () => {});
+  return {
+    component: component
+  }
+}
+
+describe('App container', () => {
+  it('should have class column', () => {
+    const app = setup()
+    expect(app.component.hasClass('column')).toBe(true);
+  })
+});

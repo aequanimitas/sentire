@@ -4,12 +4,11 @@ import { bindActionCreators } from 'redux';
 import Entry from '../components/Entry';
 import lodash from 'lodash'
 
-class App extends Component {
+export class App extends Component {
   render() {
     let { entries } = this.props
     let columnedEntries = lodash.chunk(entries, 3)
-    console.log(columnedEntries);
-    return <div>
+    return <div className="column">
       {columnedEntries.map(colEntries => {
         return <div className="row">
           { colEntries.map(entry => {
@@ -26,5 +25,4 @@ function mapStateToProps(state) {
     entries: state.entries
   }
 }
-
-export default connect(mapStateToProps)(App);
+export const AppConnect = connect(mapStateToProps)(App);

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import App from './App';
+import { AppConnect } from './App';
 
 export default class Root extends Component {
   render() {
@@ -8,7 +8,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <div>
-          <App />
+          <AppConnect />
         </div>
       </Provider>
     )
