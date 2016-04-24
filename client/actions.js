@@ -7,11 +7,22 @@ export function increaseEntryCount(state) {
   }
 }
 
-export function receivedEntries(data) {
+export function receivedEntries(data, state) {
   return {
     type: 'RECEIVED_ENTRIES',
     entries: {
-      fetched: data.data
+      fetched: data.data,
+      rendered: state.entries.rendered
+    }
+  }
+}
+
+export function renderSingleEntry(entries) {
+  return {
+    type: 'GET_ENTRY',
+    entries: {
+      fetched: entries.fetched,
+      rendered: entries.rendered
     }
   }
 }
@@ -33,7 +44,8 @@ export function fetchEntries() {
     dispatch(requestEntries())
     return fetch('/api/entries?startEntry='+entryCount.startEntry+'&endEntry='+entryCount.endEntry)
       .then(data => data.json())
-      .then(data => dispatch(receivedEntries(data)))
+      .then(data => dispatch(receivedEntries(data, getState())))
+      .then(data => dispatch(renderSingleEntry(data)))
       .then(() => { dispatch(increaseEntryCount(getState())) })
       .catch(err => {
         console.log(err);

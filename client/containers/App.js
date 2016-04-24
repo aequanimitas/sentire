@@ -6,7 +6,7 @@ import lodash from 'lodash'
 
 export class App extends Component {
   componentWillMount() {
-    this.state = { entry: this.props.entries[0] }
+    this.state = { entry: this.props.entry }
   }
 
   render() {
@@ -18,7 +18,8 @@ export class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    entries: state.entries.fetched
+    entries: state.entries.fetched,
+    entry: state.entries.rendered[0]
   }
 }
 

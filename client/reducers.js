@@ -47,6 +47,11 @@ function entries(state = initialState.entries, action) {
         fetched: [...state.fetched, ...action.entries.fetched],
         rendered: []
       }
+    case 'GET_ENTRY':
+      return {
+        fetched: state.fetched.slice(1),
+        rendered: [state.fetched[0], ...state.rendered]
+      }
     default:
       return state;
   }
