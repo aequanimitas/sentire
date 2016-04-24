@@ -5,18 +5,20 @@ import Entry from '../components/Entry';
 import lodash from 'lodash'
 
 export class App extends Component {
+  componentWillMount() {
+    this.state = { entry: this.props.entries[0] }
+  }
+
   render() {
-    let { entries, single } = this.props
-    let columnedEntries = lodash.chunk(entries, 3)
     return <div className="column">
-             <Entry entry={entries[0]} key={entries[0].id} />
+             <Entry entry={this.state.entry} key={this.state.entry.id} />
            </div>
   }
 }
 
 function mapStateToProps(state) {
   return {
-    entries: state.entries
+    entries: state.entries.fetched
   }
 }
 

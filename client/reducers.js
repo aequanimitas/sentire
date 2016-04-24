@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
 const initialState = {
-  favorites: [],
-  entries: [],
-  user: { id: undefined, role: 'anonymous' },
+  entries: {
+    fetched: [],
+    rendered: []
+  },
   entryCount: {
     startEntry: 0,
     endEntry: 30
@@ -19,13 +20,6 @@ function entryCount(state = initialState.entryCount, action) {
         startEntry: action.entryCount.startEntry + ENTRY_INCREMENTS,
         endEntry: action.entryCount.endEntry + ENTRY_INCREMENTS
       }
-    default:
-      return state
-  }
-}
-
-function user(state = initialState.user, action) {
-  switch (action.type) {
     default:
       return state
   }
@@ -49,15 +43,16 @@ function favorites(state = initialState.favorites, action) {
 function entries(state = initialState.entries, action) {
   switch(action.type) {
     case 'RECEIVED_ENTRIES':
-      return [...state, ...action.entries];
+      return {
+        fetched: [...state.fetched, ...action.entries.fetched],
+        rendered: []
+      }
     default:
       return state;
   }
 }
 
 const rootReducer = combineReducers({
-  user,
-  favorites,
   entries,
   entryCount
 });

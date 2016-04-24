@@ -14,7 +14,6 @@ import fetch from 'isomorphic-fetch';
 let store = configureStore();
 store.dispatch(fetchEntries()).then(() => {
   let rootElement = document.getElementById('root')
-
   render(
     <Root store={store}></Root>,
     rootElement

@@ -10,14 +10,19 @@ export function increaseEntryCount(state) {
 export function receivedEntries(data) {
   return {
     type: 'RECEIVED_ENTRIES',
-    entries: data.data
+    entries: {
+      fetched: data.data
+    }
   }
 }
 
 export function requestEntries() {
   return {
     type: 'REQUEST_ENTRIES',
-    entries: [],
+    entries: {
+      fetched: [],
+      rendered: []
+    },
     receivedAt: Date.now()
   }
 }
@@ -34,12 +39,4 @@ export function fetchEntries() {
         console.log(err);
       });
   }
-}
-
-export function addFavorite(qid) {
-  return { type: 'ADD_FAVORITE', id: qid };
-}
-
-export function deleteFavorite(qid) {
-  return { type: 'DELETE_FAVORITE', id: qid };
 }
