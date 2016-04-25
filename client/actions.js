@@ -4,7 +4,6 @@ import {
   REHYDRATE_ENTRIES,
   RECEIVED_ENTRIES,
   SET_CURRENT_ENTRY,
-  SET_RENDERED_ENTRY,
   MOVE_RENDERED_ENTRY,
 } from './constants/ActionTypes'
 
@@ -28,9 +27,6 @@ export const receivedEntries = (data, state) =>
 export const requestEntries = state =>
   ({ type: 'REQUEST_ENTRIES', entries: state.entries, receivedAt: Date.now() })
 
-export const setRenderedEntry = entry => 
-  ({ type: SET_RENDERED_ENTRY, entry: entry })
-
 export const rehydrateHiddenEntries = state =>
   ({ type: REHYDRATE_ENTRIES,
      entries: {
@@ -40,12 +36,11 @@ export const rehydrateHiddenEntries = state =>
   })
 
 export const setCurrentEntry = state =>
-  ({
-    type: SET_CURRENT_ENTRY,
-    entries: {
-      hidden: state.entries.hidden,
-      rendered: state.entries.rendered,
-      current: {}
+  ({ type: SET_CURRENT_ENTRY,
+     entries: {
+       hidden: state.entries.hidden,
+       rendered: state.entries.rendered,
+       current: state.entries.current
     }
   })
 

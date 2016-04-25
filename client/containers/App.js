@@ -2,22 +2,19 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Entry from '../components/Entry';
-import { fetchEntries, setRenderedEntry } from '../actions';
+import { fetchEntries, setCurrentEntry } from '../actions';
 import lodash from 'lodash'
 
 export class App extends Component {
   constructor(props) {
     super(props)
-    this.nextOrFetch = this.nextOrFetch.bind(this)
+    this.next = this.next.bind(this)
   }
 
-  nextOrFetch() {
-//    if (this.props.entries.hidden.length === 1) {
-//      this.props.dispatch(setRenderedEntry(this.props.entry)) 
-//      this.props.dispatch(fetchEntries()) 
-//     } else {
-//      this.props.dispatch(setRenderedEntry(this.props.entry)) 
-//     }
+  next() {
+    this.props.dispatch(setCurrentEntry({
+      entries: this.props.entries
+    })) 
   }
 
   render() {
@@ -27,9 +24,9 @@ export class App extends Component {
     }
     return <div className="column main-app">
              <Entry entry={entry} key={entry.id} />
-             <button className="butones" onClick={this.nextOrFetch}>Random Stoic Quote</button>
-
-
+             <div className="btn-wrapper">
+               <button className="butones" onClick={this.next}>Random Stoic Quote</button>
+             </div>
            </div>
   }
 }

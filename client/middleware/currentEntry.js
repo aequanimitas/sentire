@@ -1,4 +1,7 @@
-import { RECEIVED_ENTRIES, SET_CURRENT_ENTRY } from '../constants/ActionTypes'
+import { 
+  RECEIVED_ENTRIES, 
+  SET_CURRENT_ENTRY
+} from '../constants/ActionTypes'
 import { setCurrentEntry, moveRenderedEntry } from '../actions'
 
 export const currentEntry = store => next => action => {

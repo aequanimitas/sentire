@@ -4,7 +4,6 @@ import {
   REHYDRATE_ENTRIES,
   RECEIVED_ENTRIES,
   SET_CURRENT_ENTRY,
-  SET_RENDERED_ENTRY,
   MOVE_RENDERED_ENTRY
 } from './constants/ActionTypes'
 
@@ -44,11 +43,6 @@ function entries(state = initialState.entries, action) {
       return {
         hidden: [...state.hidden, ...state.rendered],
         rendered: [...state.hidden]
-      }
-    case SET_RENDERED_ENTRY:
-      return {
-        hidden: state.hidden.filter(entry => entry.id !== action.entry.id),
-        rendered: [...state.rendered, action.entry]
       }
     case SET_CURRENT_ENTRY:
       let current = action.entries.hidden[Math.floor(Math.random() * (action.entries.hidden.length - 1))]
