@@ -1,15 +1,14 @@
 .entry-{
-	&container { 
-		margin-bottom: 1.67rem;
-		padding: 0 1rem;
-		margin-top: 24%;
+	&container {
+    margin-bottom: 1.67rem;
+    padding: 0 1rem;
+	  margin-top: 24%;
 	}
 	&link {
 		color: #1F4788;
 	}
 	&row { margin-bottom: 2rem; }
 	&text {
-		height: 30rem;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		font-family: 'Libre Baskerville', serif;

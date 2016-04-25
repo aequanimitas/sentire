@@ -25,7 +25,7 @@ export class App extends Component {
     if (!entry) {
       return <div className="column"><h1>Loading stoic quotes</h1></div>
     }
-    return <div className="column">
+    return <div className="column main-app">
              <Entry entry={entry} key={entry.id} />
              <button className="butones" onClick={this.nextOrFetch}>Random Stoic Quote</button>
 

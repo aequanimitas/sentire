@@ -18,17 +18,10 @@ class Entry extends Component {
                {entry.text}
              </p>
              <div className="entry-meta">
-               <div className="entry-meta-info">&nbsp;-&nbsp;
-               <span className="entry-author entry-link" 
-         	           key={entry.id + 'author'}>
-                     {entry.author}, &nbsp;
+               <span className="entry-author"
+         	           key={entry.id + 'author-book' }>
+                     - {entry.author}, {entry.bookTitle}
                </span>
-               <span className="entry-book entry-link" key={entry.id + 'book'}>
-                 {entry.bookTitle}
-               </span>
-               </div>
-             </div>
-             <div className="entry-interact">
              </div>
            </div>
   }

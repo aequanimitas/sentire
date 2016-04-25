@@ -61,7 +61,6 @@ export function fetchEntries() {
           dispatch(receivedEntries(data, getState()))
         }
       })
-      .then(() => { dispatch(increaseEntryCount(getState())) })
       .catch((err) => {
         console.log(err);
       });
