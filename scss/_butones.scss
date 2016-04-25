@@ -1,0 +1,10 @@
+.butones {
+  position: absolute;
+	top: -60px;
+	right: 24px;
+	background-color: #1F4788;
+	transition: all .35s;
+	&:active, &:focus  {
+	  background-color: #1F4788;
+	}
+}
