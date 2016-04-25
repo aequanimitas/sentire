@@ -2,8 +2,12 @@ import expect from 'expect';
 import reducer from '../../client/reducers';
 
 describe('Reducers', () => {
-  describe('Entry', () => {
-    describe('GET_ENTRY', () => {
+  describe('entries', () => {
+    it('default should return an object with keys fetched, entryCount and rendered', () => {
+      expect(reducer(undefined, {})).toEqual({
+        entries: { fetched: [], rendered: [] },
+        entryCount: { endEntry: 30, startEntry: 0 }
+      })
     })
   })
 });

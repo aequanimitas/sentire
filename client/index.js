@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import Root from './containers/Root';
 import configureStore from './store/configureStore'
 
-import { requestEntries, fetchEntries } from './actions';
+import { fetchEntries } from './actions';
 
 import fetch from 'isomorphic-fetch';
 

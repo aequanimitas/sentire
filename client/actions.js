@@ -1,9 +1,11 @@
 import fetch from 'isomorphic-fetch';
 
+let DRAINED_DB = false;
+
 export function increaseEntryCount(state) {
   return {
     type: 'INCREASE_OFFSET_LIMIT',
-    entryCount: state.entryCount
+    entryFetchCounter: state.entryFetchCounter
   }
 }
 
@@ -11,44 +13,58 @@ export function receivedEntries(data, state) {
   return {
     type: 'RECEIVED_ENTRIES',
     entries: {
-      fetched: data.data,
+      hidden: data.data,
       rendered: state.entries.rendered
     }
   }
 }
 
-export function renderSingleEntry(entries) {
+export function requestEntries(state) {
   return {
-    type: 'GET_ENTRY',
-    entries: {
-      fetched: entries.fetched,
-      rendered: entries.rendered
-    }
+    type: 'REQUEST_ENTRIES',
+    entries: state.entries,
+    receivedAt: Date.now()
   }
 }
 
-export function requestEntries() {
+export function markEntryRendered(entry) {
   return {
-    type: 'REQUEST_ENTRIES',
+    type: 'ENTRY_RENDERED',
+    entry: entry
+  }
+}
+
+export function rehydrateHiddenEntries(state) {
+  return {
+    type: 'REHYDRATE_ENTRIES',
     entries: {
-      fetched: [],
-      rendered: []
-    },
-    receivedAt: Date.now()
+      hidden: state.entries.hidden,
+      rendered: state.entries.rendered
+    }
   }
 }
 
 export function fetchEntries() {
   return function (dispatch, getState) {
-    let entryCount = getState().entryCount;
-    dispatch(requestEntries())
-    return fetch('/api/entries?startEntry='+entryCount.startEntry+'&endEntry='+entryCount.endEntry)
+    let entryCount = getState().entryFetchCounter;
+    if (DRAINED_DB) {
+      dispatch(rehydrateHiddenEntries(getState()))
+    } else {
+      dispatch(requestEntries(getState()))
+      return fetch('/api/entries?startEntry='+entryCount.start+'&entryFetchLimit='+entryCount.limit)
       .then(data => data.json())
-      .then(data => dispatch(receivedEntries(data, getState())))
-      .then(data => dispatch(renderSingleEntry(data)))
+      .then((data) => {
+        if (data.data.length === 0) {
+          EMPTY_DB = true;
+          dispatch(rehydrateHiddenEntries(getState()))
+        } else {
+          dispatch(receivedEntries(data, getState()))
+        }
+      })
       .then(() => { dispatch(increaseEntryCount(getState())) })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
+    }
   }
 }

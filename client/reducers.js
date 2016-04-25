@@ -2,41 +2,24 @@ import { combineReducers } from 'redux';
 
 const initialState = {
   entries: {
-    fetched: [],
-    rendered: []
+    rendered: [],
+    hidden: []
   },
-  entryCount: {
-    startEntry: 0,
-    endEntry: 30
+  entryFetchCounter: {
+    start: 0,
+    limit: 30,
   }
 }
 
-const ENTRY_INCREMENTS = 32
-
-function entryCount(state = initialState.entryCount, action) {
+function entryFetchCounter(state = initialState.entryFetchCounter, action) {
   switch(action.type) {
     case 'INCREASE_OFFSET_LIMIT':
       return {
-        startEntry: action.entryCount.startEntry + ENTRY_INCREMENTS,
-        endEntry: action.entryCount.endEntry + ENTRY_INCREMENTS
+        start: action.entryFetchCounter.start + action.entryFetchCounter.limit,
+        limit: state.limit
       }
     default:
       return state
-  }
-}
-
-function favorites(state = initialState.favorites, action) {
-  switch(action.type) {
-    case 'ADD_FAVORITE':
-      if (state.indexOf(action.id) > -1) {
-        return state;
-      } else {
-        return [ ...state, action.id ];
-      }
-    case 'DELETE_FAVORITE':
-      return state.filter(entry => entry !== action.id);
-    default:
-      return state;
   }
 }
 
@@ -44,13 +27,18 @@ function entries(state = initialState.entries, action) {
   switch(action.type) {
     case 'RECEIVED_ENTRIES':
       return {
-        fetched: [...state.fetched, ...action.entries.fetched],
-        rendered: []
+        hidden: [...state.hidden, ...action.entries.hidden],
+        rendered: state.rendered
       }
-    case 'GET_ENTRY':
+    case 'REHYDRATE_ENTRIES':
       return {
-        fetched: state.fetched.slice(1),
-        rendered: [state.fetched[0], ...state.rendered]
+        hidden: [...state.hidden, ...state.rendered],
+        rendered: [...state.hidden]
+      }
+    case 'ENTRY_RENDERED':
+      return {
+        hidden: state.hidden.filter(entry => entry.id !== action.entry.id),
+        rendered: [...state.rendered, action.entry]
       }
     default:
       return state;
@@ -59,7 +47,7 @@ function entries(state = initialState.entries, action) {
 
 const rootReducer = combineReducers({
   entries,
-  entryCount
+  entryFetchCounter
 });
 
 export default rootReducer;
