@@ -2,11 +2,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { counter } from '../middleware/counter';
+import { currentEntry, moveEntry } from '../middleware/currentEntry';
 import DevTools from '../containers/DevTools';
 import rootReducer from '../reducers';
 
 const finalCreateStore = compose(
-  applyMiddleware(thunkMiddleware, createLogger(), counter),
+  applyMiddleware(thunkMiddleware, createLogger(), moveEntry, currentEntry, counter),
   DevTools.instrument()
 )(createStore);
 

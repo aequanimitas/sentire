@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Entry from '../components/Entry';
-import { fetchEntries, markEntryRendered } from '../actions';
+import { fetchEntries, setRenderedEntry } from '../actions';
 import lodash from 'lodash'
 
 export class App extends Component {
@@ -12,12 +12,12 @@ export class App extends Component {
   }
 
   nextOrFetch() {
-    if (this.props.entries.hidden.length === 1) {
-      this.props.dispatch(markEntryRendered(this.props.entry)) 
-      this.props.dispatch(fetchEntries()) 
-     } else {
-      this.props.dispatch(markEntryRendered(this.props.entry)) 
-     }
+//    if (this.props.entries.hidden.length === 1) {
+//      this.props.dispatch(setRenderedEntry(this.props.entry)) 
+//      this.props.dispatch(fetchEntries()) 
+//     } else {
+//      this.props.dispatch(setRenderedEntry(this.props.entry)) 
+//     }
   }
 
   render() {
@@ -41,7 +41,7 @@ App.propTypes = {
 function mapStateToProps(state) {
   return {
     entries: state.entries,
-    entry: state.entries.hidden[Math.floor(Math.random() * (state.entries.hidden.length - 1))]
+    entry: state.entries.current
   }
 }
 
