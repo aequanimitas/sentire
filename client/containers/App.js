@@ -27,7 +27,9 @@ export class App extends Component {
     }
     return <div className="column">
              <Entry entry={entry} key={entry.id} />
-             <button className="butones" onClick={this.nextOrFetch}>One More</button>
+             <button className="butones" onClick={this.nextOrFetch}>Random Stoic Quote</button>
+
+
            </div>
   }
 }
