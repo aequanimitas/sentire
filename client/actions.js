@@ -55,7 +55,7 @@ export function fetchEntries() {
       .then(data => data.json())
       .then((data) => {
         if (data.data.length === 0) {
-          EMPTY_DB = true;
+          DRAINED_DB = true;
           dispatch(rehydrateHiddenEntries(getState()))
         } else {
           dispatch(receivedEntries(data, getState()))
