@@ -9,8 +9,20 @@ import {
 
 let DRAINED_DB = false;
 
-export const increaseEntryCount = state =>
-  ({ type: INCREASE_OFFSET_LIMIT, entryFetchCounter: state.entryFetchCounter })
+export const increaseEntryCount = (payload) => ({
+  type: 'INCREASE_OFFSET_LIMIT',
+  entryFetchCounter: payload.entryFetchCounter
+})
+
+export const setCurrentEntry = (payload) => ({
+  type: 'SET_CURRENT_ENTRY',
+  entries: payload.entries
+})
+
+export const moveCurrentEntry = (payload) => ({
+  type: 'MOVE_CURRENT_ENTRY',
+  entry: payload.entries.current
+})
 
 export const moveRenderedEntry = state =>
   ({ type: MOVE_RENDERED_ENTRY, entries: state.entries })
@@ -21,11 +33,18 @@ export const receivedEntries = (data, state) =>
       hidden: data.data,
       rendered: state.entries.rendered,
       current: state.entries.current
-    }
+    },
+    entryFetchCounter: state.entryFetchCounter
   })
 
-export const requestEntries = state =>
-  ({ type: 'REQUEST_ENTRIES', entries: state.entries, receivedAt: Date.now() })
+export function requestEntries(state) {
+  return {
+    type: 'REQUEST_ENTRIES',
+    entries: state.entries,
+    entryFetchCounter: state.entryFetchCounter,
+    receivedAt: Date.now()
+  }
+}
 
 export const rehydrateHiddenEntries = state =>
   ({ type: REHYDRATE_ENTRIES,
@@ -35,23 +54,14 @@ export const rehydrateHiddenEntries = state =>
     }
   })
 
-export const setCurrentEntry = state =>
-  ({ type: SET_CURRENT_ENTRY,
-     entries: {
-       hidden: state.entries.hidden,
-       rendered: state.entries.rendered,
-       current: state.entries.current
-    }
-  })
-
 export function fetchEntries() {
   return function (dispatch, getState) {
-    let entryCount = getState().entryFetchCounter;
     if (DRAINED_DB) {
-      dispatch(rehydrateHiddenEntries(getState()))
+      return dispatch(rehydrateHiddenEntries(getState()))
     } else {
+      let qryParams = getState().entryFetchCounter
       dispatch(requestEntries(getState()))
-      return fetch('/api/entries?startEntry='+entryCount.start+'&entryFetchLimit='+entryCount.limit)
+      return fetch('/api/entries?startEntry='+qryParams.start+'&entryFetchLimit='+qryParams.limit)
       .then(data => data.json())
       .then((data) => {
         if (data.data.length === 0) {

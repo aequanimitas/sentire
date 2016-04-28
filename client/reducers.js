@@ -35,27 +35,28 @@ function entries(state = initialState.entries, action) {
   switch(action.type) {
     case RECEIVED_ENTRIES:
       return {
-        hidden: [...state.hidden, ...action.entries.hidden],
+        hidden: [...state.hidden],
         rendered: state.rendered,
-        current: Object.assign({}, action.entries.current)
+        current: state.current
       }
     case REHYDRATE_ENTRIES:
       return {
         hidden: [...state.hidden, ...state.rendered],
-        rendered: [...state.hidden]
+        rendered: [...state.hidden],
+        current: state.current
       }
-    case SET_CURRENT_ENTRY:
+    case 'MOVE_CURRENT_ENTRY':
+      return {
+        hidden: state.hidden.filter(entry => entry.id !== action.entry.id),
+        rendered: [...state.rendered, action.entry],
+        current: state.current
+      }
+   case 'SET_CURRENT_ENTRY':
       let current = action.entries.hidden[Math.floor(Math.random() * (action.entries.hidden.length - 1))]
       return {
-        hidden: state.hidden,
-        rendered: state.rendered,
+        hidden: [...action.entries.hidden],
+        rendered: [...action.entries.rendered],
         current: Object.assign({}, current)
-      }
-    case MOVE_RENDERED_ENTRY:
-      return {
-        hidden: state.hidden.filter(entry => entry.id !== action.entries.current.id),
-        rendered: [...state.rendered, action.entries.current],
-        current: state.current
       }
     default:
       return state;

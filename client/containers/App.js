@@ -8,13 +8,11 @@ import lodash from 'lodash'
 export class App extends Component {
   constructor(props) {
     super(props)
-    this.next = this.next.bind(this)
+    this.nextEntry = this.nextEntry.bind(this)
   }
 
-  next() {
-    this.props.dispatch(setCurrentEntry({
-      entries: this.props.entries
-    })) 
+  nextEntry() {
+    this.props.dispatch(markEntryRendered(this.props.entry)) 
   }
 
   render() {
@@ -24,20 +22,23 @@ export class App extends Component {
     }
     return <div className="column main-app">
              <Entry entry={entry} key={entry.id} />
-             <div className="btn-wrapper">
-               <button className="butones" onClick={this.next}>Random Stoic Quote</button>
-             </div>
+             <button className="butones" onClick={this.nextEntry}>Random Stoic Quote</button>
            </div>
   }
 }
 
 App.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  entry: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired
+  }).isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    entries: state.entries,
     entry: state.entries.current
   }
 }
