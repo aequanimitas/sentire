@@ -8,16 +8,11 @@ import lodash from 'lodash'
 export class App extends Component {
   constructor(props) {
     super(props)
-    this.nextOrFetch = this.nextOrFetch.bind(this)
+    this.nextEntry = this.nextEntry.bind(this)
   }
 
-  nextOrFetch() {
-    if (this.props.entries.hidden.length === 1) {
-      this.props.dispatch(markEntryRendered(this.props.entry)) 
-      this.props.dispatch(fetchEntries()) 
-     } else {
-      this.props.dispatch(markEntryRendered(this.props.entry)) 
-     }
+  nextEntry() {
+    this.props.dispatch(markEntryRendered(this.props.entry)) 
   }
 
   render() {
@@ -27,21 +22,24 @@ export class App extends Component {
     }
     return <div className="column main-app">
              <Entry entry={entry} key={entry.id} />
-             <button className="butones" onClick={this.nextOrFetch}>Random Stoic Quote</button>
-
-
+             <button className="butones" onClick={this.nextEntry}>Random Stoic Quote</button>
            </div>
   }
 }
 
 App.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  entry: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired
+  }).isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    entries: state.entries,
-    entry: state.entries.hidden[Math.floor(Math.random() * (state.entries.hidden.length - 1))]
+    entry: state.entries.current
   }
 }
 
