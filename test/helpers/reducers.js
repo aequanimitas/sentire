@@ -1,8 +1,10 @@
+import { combineReducers } from 'redux';
 const initialState = {
   entries: { hidden: [], rendered: [], current: {} },
   entryFetchCounter: { start: 0, limit: 30}
 }
-export function wrapReducer(spyOnMethods) {
+
+function interceptReceivedEntries(spyOnMethods) {
   let eSpy = arguments[0]
   return function reducers(state = initialState.entries, action) {
            switch(action.type) {
@@ -24,3 +26,23 @@ export function wrapReducer(spyOnMethods) {
            }
          }
 }
+
+function entryFetchCounter(state = initialState.entryFetchCounter, action) {
+  switch(action.type) {
+    case 'INCREASE_OFFSET_LIMIT':
+      return {
+        start: action.entryFetchCounter.start + action.entryFetchCounter.limit,
+        limit: state.limit
+      }
+    default:
+      return state
+  }
+}
+
+const rootReducer = function(entriesSpy) {
+  return combineReducers({ 
+    entries: interceptReceivedEntries(entriesSpy),
+    entryFetchCounter })
+}
+
+export default rootReducer

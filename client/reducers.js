@@ -66,6 +66,6 @@ function entries(state = initialState.entries, action) {
 const rootReducer = combineReducers({
   entries,
   entryFetchCounter
-});
+})
 
-export default rootReducer;
+export default rootReducer
