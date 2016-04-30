@@ -42,20 +42,23 @@ function intercept(spy) {
   };
 }
 
-function entryFetchCounter(state = initialState.entryFetchCounter, action) {
-  switch(action.type) {
-    case 'INCREASE_OFFSET_LIMIT':
-      return {
-        start: action.entryFetchCounter.start + action.entryFetchCounter.limit,
-        limit: state.limit
-      }
-    default:
-      return state
+function interceptCounter(spy) {
+  return (state = initialState.entryFetchCounter, action) => {
+    switch(action.type) {
+      case 'INCREASE_OFFSET_LIMIT':
+        spy.increaseOffsetLimit()
+        return {
+          start: action.entryFetchCounter.start + action.entryFetchCounter.limit,
+          limit: state.limit
+        }
+      default:
+        return state
+    }
   }
 }
 
-export function handleEntries(entriesSpy) {
+export function handleEntries(spies) {
   return combineReducers({ 
-    entries: intercept(entriesSpy),
-    entryFetchCounter })
+    entries: intercept(spies.entries),
+    entryFetchCounter: interceptCounter(spies.counter)})
 }

@@ -13,7 +13,7 @@ describe('Entry middleware', () => {
       rehydrateEntries: expect.createSpy(() => {}),
       setCurrentEntry: expect.createSpy(() => {})
     }
-    let store = applyMiddleware(thunkMiddleware, entry)(createStore)(handleEntries(spy))
+    let store = applyMiddleware(thunkMiddleware, entry)(createStore)(handleEntries({entries: spy}))
     store.dispatch(receivedEntries(require('../fixtures/epictetus.json'), store.getState()))
     expect(spy.setCurrentEntry.calls.length).toEqual(1)
     expect(spy.moveCurrentEntry.calls.length).toEqual(1)
@@ -25,7 +25,7 @@ describe('Entry middleware', () => {
       rehydrateEntries: expect.createSpy(() => {}),
       setCurrentEntry: expect.createSpy(() => {})
     }
-    let store = applyMiddleware(thunkMiddleware, entry)(createStore)(handleEntries(spy))
+    let store = applyMiddleware(thunkMiddleware, entry)(createStore)(handleEntries({entries: spy}))
     store.dispatch(receivedEntries(require('../fixtures/epictetus.json'), store.getState()))
     expect(spy.setCurrentEntry.calls.length).toEqual(1)
     expect(spy.moveCurrentEntry.calls.length).toEqual(1)
