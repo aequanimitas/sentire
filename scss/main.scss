@@ -1,4 +1,9 @@
 @import 'app';
 @import 'entry';
-@import 'butones';
+@import 'buttons';
 @import 'media';
+
+.cpEntryText {
+  position: absolute;
+	top: -9999px;
+}

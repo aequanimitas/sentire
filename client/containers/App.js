@@ -9,10 +9,18 @@ export class App extends Component {
   constructor(props) {
     super(props)
     this.nextEntry = this.nextEntry.bind(this)
+    this.copyEntryText = this.copyEntryText.bind(this)
   }
 
   nextEntry() {
     this.props.dispatch(nextEntry()) 
+  }
+
+  copyEntryText() {
+    let inp = this.refs.cpEntryText
+    inp.select()
+    document.execCommand('copy')
+    inp.blur()
   }
 
   render() {
@@ -22,7 +30,11 @@ export class App extends Component {
     }
     return <div className="column main-app">
              <Entry entry={entry} key={entry.id} />
-             <button className="butones" onClick={this.nextEntry}>Random Stoic Quote</button>
+             <div className="btn-wrapper">
+               <button className="random-btn ctrl-btn" onClick={this.nextEntry}>next</button>
+               <button className="copy-btn ctrl-btn" onClick={this.copyEntryText}>copy</button>
+             </div>
+             <input className="cpEntryText" type="text" value={entry.text} ref="cpEntryText" readOnly />
            </div>
   }
 }
