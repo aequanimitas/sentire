@@ -3,24 +3,25 @@ import {
   INCREASE_OFFSET_LIMIT,
   REHYDRATE_ENTRIES,
   RECEIVED_ENTRIES,
+  REQUEST_ENTRIES,
   SET_CURRENT_ENTRY,
-  MOVE_RENDERED_ENTRY,
+  MOVE_CURRENT_ENTRY,
 } from './constants/ActionTypes'
 
 let DRAINED_DB = false;
 
 export const increaseEntryCount = (payload) => ({
-  type: 'INCREASE_OFFSET_LIMIT',
+  type: INCREASE_OFFSET_LIMIT,
   entryFetchCounter: payload.entryFetchCounter
 })
 
 export const setCurrentEntry = (payload) => ({
-  type: 'SET_CURRENT_ENTRY',
+  type: SET_CURRENT_ENTRY,
   entries: payload.entries
 })
 
 export const moveCurrentEntry = (payload) => ({
-  type: 'MOVE_CURRENT_ENTRY',
+  type: MOVE_CURRENT_ENTRY,
   entry: payload.entries.current
 })
 
@@ -39,7 +40,7 @@ export const receivedEntries = (data, state) =>
 
 export function requestEntries(state) {
   return {
-    type: 'REQUEST_ENTRIES',
+    type: REQUEST_ENTRIES,
     entries: state.entries,
     entryFetchCounter: state.entryFetchCounter,
     receivedAt: Date.now()

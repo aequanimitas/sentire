@@ -4,7 +4,7 @@ import {
   REHYDRATE_ENTRIES,
   RECEIVED_ENTRIES,
   SET_CURRENT_ENTRY,
-  MOVE_RENDERED_ENTRY
+  MOVE_CURRENT_ENTRY
 } from './constants/ActionTypes'
 
 const initialState = {
@@ -45,13 +45,13 @@ function entries(state = initialState.entries, action) {
         rendered: [...state.hidden],
         current: state.current
       }
-    case 'MOVE_CURRENT_ENTRY':
+    case MOVE_CURRENT_ENTRY:
       return {
         hidden: state.hidden.filter(entry => entry.id !== action.entry.id),
         rendered: [...state.rendered, action.entry],
         current: state.current
       }
-   case 'SET_CURRENT_ENTRY':
+   case SET_CURRENT_ENTRY:
       let current = action.entries.hidden[Math.floor(Math.random() * (action.entries.hidden.length - 1))]
       return {
         hidden: [...action.entries.hidden],
