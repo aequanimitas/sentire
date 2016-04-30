@@ -19,9 +19,10 @@
 	border: 0;
 	transition: all .35s;
   right: -210px;
+	width: 120px;
 	&:active, &:focus  {
 	  background-color: #1F4788;
 	}
-	&.random-btn { top: 2px; right: -208px; }
+	&.random-btn { top: 2px; }
 	&.copy-btn { top: 36px; }
 }
