@@ -46,9 +46,7 @@ export function requestEntries(state) {
   }
 }
 
-export const markEntryRendered = (entry) => ({
-  type: 'ENTRY_RENDERED', entry: entry
-})
+export const nextEntry = () => ({ type: 'NEXT_ENTRY' })
 
 export const rehydrateHiddenEntries = state =>
   ({ type: REHYDRATE_ENTRIES,

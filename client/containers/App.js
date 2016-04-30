@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Entry from '../components/Entry';
-import { fetchEntries, setCurrentEntry, markEntryRendered } from '../actions';
+import { fetchEntries, setCurrentEntry, nextEntry } from '../actions';
 import lodash from 'lodash'
 
 export class App extends Component {
@@ -12,7 +12,7 @@ export class App extends Component {
   }
 
   nextEntry() {
-    this.props.dispatch(markEntryRendered(this.props.entry)) 
+    this.props.dispatch(nextEntry()) 
   }
 
   render() {

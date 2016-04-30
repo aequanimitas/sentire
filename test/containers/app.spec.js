@@ -8,7 +8,8 @@ import configureStore from '../../client/store/configureStore'
 function setup() {
   const store = configureStore();
   const props = {
-    entry: require('../fixtures/epictetus.json').data[0]
+    entry: require('../fixtures/epictetus.json').data[0],
+    dispatch: (() => {})
   }
   const component = shallow(
       <App {...props} />

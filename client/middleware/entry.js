@@ -7,7 +7,7 @@ export function entry({ dispatch, getState }) {
         dispatch(setCurrentEntry(action))
         dispatch(moveCurrentEntry(getState()))
       }
-      if (action.type === 'ENTRY_RENDERED') {
+      if (action.type === 'NEXT_ENTRY') {
         if (getState().entries.hidden.length === 0) {
           dispatch(fetchEntries())
         } else {
