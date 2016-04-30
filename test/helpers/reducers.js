@@ -4,46 +4,32 @@ const initialState = {
   entryFetchCounter: { start: 0, limit: 30}
 }
 
-function interceptReceivedEntries(spyOnMethods) {
-  let eSpy = arguments[0]
+function intercept(spy) {
   return (state = initialState.entries, action) => {
     switch(action.type) {
       case 'RECEIVED_ENTRIES':
-        return {}
-      case 'REHYDRATE_ENTRIES':
-        return []
-      case 'MOVE_CURRENT_ENTRY':
-        spyOnMethods(eSpy)
-        return []
-      case 'SET_CURRENT_ENTRY':
-        spyOnMethods(eSpy)
-        return []
-      default:
-        return state;
-    }
-  };
-}
-function interceptNextEntry(spyOnMethods) {
-  let eSpy = arguments[0]
-  return (state = initialState.entries, action) => {
-    switch(action.type) {
-      case 'RECEIVED_ENTRIES':
+        spy.receivedEntries()
         return {
           hidden: [...state.hidden],
           rendered: state.rendered,
           current: state.current
         }
       case 'REHYDRATE_ENTRIES':
-        return []
+        spy.rehydrateEntries()
+        return {
+          hidden: [...state.hidden, ...state.rendered],
+          rendered: [...state.hidden],
+          current: state.current
+        }
       case 'MOVE_CURRENT_ENTRY':
-        spyOnMethods(eSpy)
+        spy.moveCurrentEntry()
         return {
           hidden: state.hidden.filter(entry => entry.id !== action.entry.id),
           rendered: [...state.rendered, action.entry],
           current: state.current
         }
       case 'SET_CURRENT_ENTRY':
-        spyOnMethods(eSpy)
+        spy.setCurrentEntry()
         let current = action.entries.hidden[Math.floor(Math.random() * (action.entries.hidden.length - 1))]
         return {
           hidden: [...action.entries.hidden],
@@ -68,14 +54,8 @@ function entryFetchCounter(state = initialState.entryFetchCounter, action) {
   }
 }
 
-export function handleReceivedEntries(entriesSpy) {
+export function handleEntries(entriesSpy) {
   return combineReducers({ 
-    entries: interceptReceivedEntries(entriesSpy),
-    entryFetchCounter })
-}
-
-export function handleNextEntry(entriesSpy) {
-  return combineReducers({ 
-    entries: interceptNextEntry(entriesSpy),
+    entries: intercept(entriesSpy),
     entryFetchCounter })
 }
