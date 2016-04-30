@@ -25,9 +25,6 @@ export const moveCurrentEntry = (payload) => ({
   entry: payload.entries.current
 })
 
-export const moveRenderedEntry = state =>
-  ({ type: MOVE_RENDERED_ENTRY, entries: state.entries })
-
 export const receivedEntries = (data, state) =>
   ({ type: RECEIVED_ENTRIES,
     entries: {
