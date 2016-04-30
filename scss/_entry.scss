@@ -2,7 +2,7 @@
 	&container {
     margin-bottom: 1.67rem;
     padding: 0 1rem;
-	  margin-top: 12%;
+	  margin-top: 24%;
 	}
 	&link {
 		color: #1F4788;
@@ -17,19 +17,28 @@
 		margin-bottom: 0.6rem;
 		font-size: 24px;
 		color: #050303;
+		max-height: 378px;
 		&.more { 
 			max-height: 60rem; 
 			font-family: 'Open Sans', sans-serif;
 		}
 	}
+	&info {
+    position: absolute;
+		right: 33px;
+	}
 	&author, &book {
 		font-family: 'Roboto', sans-serif;
 		font-weight: 400;
 		display: inline-block;
-		font-size: 2rem;
-		&::first-letter {
+		font-size: 14px;
+		color: #1F4788;
+		&:first-letter {
 			text-transform: uppercase;
 		}
+	}
+	&author:first-letter {
+			text-transform: uppercase;
 	}
 	&see-more, &favorite{
 		display: inline-block;
