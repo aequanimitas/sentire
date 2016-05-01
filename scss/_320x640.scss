@@ -1,0 +1,49 @@
+// galaxy s5, HTC One, OnePlus One, note 3, note 2
+@media only screen 
+and (max-width: 640px) 
+and (orientation: landscape) {
+	body { padding-bottom: 12%; }
+	.entry-container { margin-top: 3%; }
+	.btn-wrapper {
+		bottom: 3.5%;
+		height: 38px;
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: 18%;
+			}
+		}
+	}
+	.entry-container { margin-top: 4%; }
+}
+
+@media (device-width: 360px) 
+and (device-height: 640px) 
+and (orientation: portrait) {
+  body { padding-bottom: 18%;  }
+	.btn-wrapper {
+		bottom: -5.5%;
+		right: 0;
+		height: 11%;
+		width: 100%;
+		.ctrl-btn {
+			width: 49.9%;
+  		border-radius: 0;
+			margin-bottom: 0;
+      top: 1%;
+			&.copy-btn { right: 0; }
+			&.random-btn { right: 50%; }
+		}
+	}
+	.entry-container {
+		margin-top: 4%;
+	}
+}

@@ -1,0 +1,18 @@
+// iphone 6
+@media (device-height: 667px) and (device-width: 375px) and (orientation: portrait) {
+	.entry-container {
+		margin-top: 3%;
+		.entry-text {
+			height: 49rem;
+		}
+	}
+}
+
+@media (device-width: 667px) and (device-height: 375px) and (orientation: landscape) {
+	.entry-container {
+		margin-top: 3%;
+		.entry-text {
+			height: 23rem;
+		}
+	}
+}

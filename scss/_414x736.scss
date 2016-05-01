@@ -1,0 +1,48 @@
+
+// iphone 6 plus
+@media (device-width: 414px) and (device-height: 736px) and (orientation: portrait) {
+	body { padding-bottom: 12%; }
+	.entry-container {
+		margin-top: 12%;
+	}
+	.btn-wrapper {
+		bottom: -1%;
+		height: 38px;
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: 1%;
+			}
+		}
+  }
+}
+
+@media (device-height: 414px) and (device-width: 736px) and (orientation: landscape) {
+	.entry-container { margin-top: 3%; }
+	.btn-wrapper {
+		bottom: -0.5%;
+		height: 10%; 
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: 22%;
+			}
+		}
+	}
+}

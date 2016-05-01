@@ -1,0 +1,18 @@
+// nexus 6P
+@media (device-width: 435px) and (device-height: 773px) and (orientation: portrait) {
+	.entry-container {
+		margin-top: 12%;
+		.entry-text {
+			height: 54rem;
+		}
+	}
+}
+
+@media (device-width: 773px) and (device-height: 435px) and (orientation: landscape) {
+	.entry-container {
+		margin-top: 3%;
+		.entry-text {
+			height: 27rem;
+		}
+	}
+}
