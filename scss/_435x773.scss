@@ -1,18 +1,46 @@
 // nexus 6P
 @media (device-width: 435px) and (device-height: 773px) and (orientation: portrait) {
-	.entry-container {
-		margin-top: 12%;
-		.entry-text {
-			height: 54rem;
+	body { padding-bottom: 18%; }
+	.entry-container { margin-top: 18%; }
+	.btn-wrapper {
+		bottom: 2.7%; 
+		height: 38px;
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: 3.6%;
+			}
 		}
-	}
+  }
 }
 
 @media (device-width: 773px) and (device-height: 435px) and (orientation: landscape) {
-	.entry-container {
-		margin-top: 3%;
-		.entry-text {
-			height: 27rem;
+	body { padding-bottom: 7%; }
+	.entry-container { margin-top: 3%; }
+	.btn-wrapper {
+		bottom: -0.5%;
+		height: 10%; 
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: 22%;
+			}
 		}
 	}
 }

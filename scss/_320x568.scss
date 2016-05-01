@@ -1,17 +1,45 @@
 // iphone 5
 @media (device-width: 320px) and (device-height: 568px) and (orientation: portrait) {
-	.entry-container {
-		margin-top: 3%;
-		.entry-text {
-			height: 38rem;
+	body { padding-bottom: 15%; }
+	.entry-container { margin-top: 3%; }
+	.btn-wrapper {
+		bottom: 0%;
+		height: 38px;
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: -12.5%;
+			}
 		}
 	}
 }
 @media (device-width: 568px) and (device-height: 320px) and (orientation: landscape) {
-	.entry-container {
-		margin-top: 3%;
-		.entry-text {
-			height: 15rem;
+	body { padding-bottom: 11%; }
+	.entry-container { margin-top: 3%; }
+	.btn-wrapper {
+		bottom: 0;
+		height: 38px;
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: 14.2%;
+			}
 		}
 	}
 }

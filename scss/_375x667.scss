@@ -1,18 +1,50 @@
 // iphone 6
-@media (device-height: 667px) and (device-width: 375px) and (orientation: portrait) {
+@media (device-height: 667px) 
+and (device-width: 375px) 
+and (orientation: portrait) {
+	body { padding-bottom: 18%; }
 	.entry-container {
 		margin-top: 3%;
-		.entry-text {
-			height: 49rem;
-		}
 	}
+	.btn-wrapper {
+		bottom: 3%;
+		height: 38px;
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: -3.6%
+			}
+		}
+  }
 }
 
 @media (device-width: 667px) and (device-height: 375px) and (orientation: landscape) {
-	.entry-container {
-		margin-top: 3%;
-		.entry-text {
-			height: 23rem;
+	body { padding-bottom: 9%; }
+	.entry-container { margin-top: 3%; }
+	.btn-wrapper {
+		bottom: -0.5%;
+		height: 10%; 
+		width: 100%;
+		.ctrl-btn {
+  		border-radius: 0;
+			margin-bottom: 0;
+			&.copy-btn {
+        top: 0.5%;
+				width: 49.9%;
+			}
+			&.random-btn {
+        top: 0.5%;
+				width: 49.9%;
+				right: 19.3%;
+			}
 		}
 	}
 }
