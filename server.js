@@ -3,12 +3,12 @@ var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 
-app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === 'development') {
 
+  app.use(require('morgan')('dev'));
   var webpackDevMiddleware = require('webpack-dev-middleware');
   var webpackHotMiddleware = require('webpack-hot-middleware');
   var webpack = require('webpack');
@@ -25,6 +25,12 @@ if (process.env.NODE_ENV === 'development') {
     res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
     res.end();
   });
+} else {
+  app.use(express.static(__dirname + '/dist'))
+  app.disable('x-powered-by')
+  app.get('/', function (req, res, next) {
+    res.sendFile(__dirname + '/dist/index.html')
+  })
 }
 
 app.use('/api', require('./routes'));

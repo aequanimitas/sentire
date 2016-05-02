@@ -10,7 +10,6 @@ class Entry extends Component {
 
   render() {
     let entry = Object.assign({}, this.props.entry);
-    entry.initialText = entry.text.slice(0, entry.text.indexOf('.') + 1);
     let tempId = 'entry' + entry.id;
     let entryTextClasses = classnames('entry-text')
     return <div className="entry-container column">
