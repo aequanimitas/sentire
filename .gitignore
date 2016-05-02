@@ -7,3 +7,4 @@ log/
 pids/
 *.swo
 npm-debug.log
+knexfile.production.js
