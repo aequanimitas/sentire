@@ -13,8 +13,8 @@ entries.get('/', function(req, res) {
       'book.name as bookTitle',
       'entry.entryId as id'
     ])
-    .limit(parseInt(req.query.entryFetchLimit, 10))
-    .offset(parseInt(req.query.startEntry, 10))
+    .limit(parseInt(req.query.entryFetchLimit ? req.query.entryFetchLimit : 10 , 10))
+    .offset(parseInt(req.query.startEntry ? req.query.startEntry : 0, 10))
     .then(function(collection) {
       res.json({data: collection});
     });
