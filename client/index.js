@@ -7,12 +7,12 @@ import { createStore, applyMiddleware } from 'redux';
 import Root from './containers/Root';
 import configureStore from './store/configureStore'
 
-import { fetchEntries } from './actions';
+import { entries } from './actions';
 
 import fetch from 'isomorphic-fetch';
 
 let store = configureStore();
-store.dispatch(fetchEntries()).then(() => {
+store.dispatch(entries.fetch()).then(() => {
   let rootElement = document.getElementById('root')
   render(
     <Root store={store}></Root>,

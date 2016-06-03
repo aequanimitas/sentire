@@ -1,36 +1,49 @@
 import expect from 'expect';
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { entry } from '../../client/middleware/entry'
+import { entry as middlewareEntry } from '../../client/middleware/entry'
 import { handleEntries } from '../helpers/reducers'
-import { receivedEntries, nextEntry } from '../../client/actions'
+import { entries, entry as actionsEntry } from '../../client/actions'
 
 describe('Entry middleware', () => {
   it('should intercept RECEIVED_ENTRIES', () => {
     let spy = {
-      moveCurrentEntry: expect.createSpy(() => {}),
-      receivedEntries: expect.createSpy(() => {}),
+      entries: {
+        received: expect.createSpy(() => {})
+      },
       rehydrateEntries: expect.createSpy(() => {}),
-      setCurrentEntry: expect.createSpy(() => {})
+      entry: {
+        current: {
+          set: expect.createSpy(() => {}),
+          move: expect.createSpy(() => {})
+        }
+      }
     }
-    let store = applyMiddleware(thunkMiddleware, entry)(createStore)(handleEntries({entries: spy}))
-    store.dispatch(receivedEntries(require('../fixtures/epictetus.json'), store.getState()))
-    expect(spy.setCurrentEntry.calls.length).toEqual(1)
-    expect(spy.moveCurrentEntry.calls.length).toEqual(1)
+    let store = applyMiddleware(thunkMiddleware, middlewareEntry)(createStore)(handleEntries({entries: spy}))
+      store.dispatch(entries.received(require('../fixtures/epictetus.json'), store.getState()))
+      expect(spy.entry.current.set.calls.length).toEqual(1)
+      expect(spy.entry.current.move.calls.length).toEqual(1)
   })
   it('should intercept NEXT_ENTRY', () => {
     let spy = {
-      moveCurrentEntry: expect.createSpy(() => {}),
-      receivedEntries: expect.createSpy(() => {}),
+      entries: {
+        received: expect.createSpy(() => {})
+      },
       rehydrateEntries: expect.createSpy(() => {}),
-      setCurrentEntry: expect.createSpy(() => {})
+      entry: {
+        current: {
+          set: expect.createSpy(() => {}),
+          move: expect.createSpy(() => {})
+        },
+        next: expect.createSpy(() => {})
+      }
     }
-    let store = applyMiddleware(thunkMiddleware, entry)(createStore)(handleEntries({entries: spy}))
-    store.dispatch(receivedEntries(require('../fixtures/epictetus.json'), store.getState()))
-    expect(spy.setCurrentEntry.calls.length).toEqual(1)
-    expect(spy.moveCurrentEntry.calls.length).toEqual(1)
-    store.dispatch(nextEntry())
-    expect(spy.setCurrentEntry.calls.length).toEqual(2)
-    expect(spy.moveCurrentEntry.calls.length).toEqual(2)
+    let store = applyMiddleware(thunkMiddleware, middlewareEntry)(createStore)(handleEntries({entries: spy}))
+      store.dispatch(entries.received(require('../fixtures/epictetus.json'), store.getState()))
+      expect(spy.entry.current.set.calls.length).toEqual(1)
+      expect(spy.entry.current.move.calls.length).toEqual(1)
+      store.dispatch(actionsEntry.next())
+      expect(spy.entry.current.set.calls.length).toEqual(2)
+      expect(spy.entry.current.move.calls.length).toEqual(2)
   })
 })

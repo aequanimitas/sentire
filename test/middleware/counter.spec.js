@@ -3,13 +3,15 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { counter } from '../../client/middleware/counter'
 import { handleEntries } from '../helpers/reducers'
-import { receivedEntries, nextEntry } from '../../client/actions'
+import { entries, entry as actionsEntry } from '../../client/actions'
 
 describe('Counter middleware', () => {
   it('should intercept RECEIVED_ENTRIES', () => {
-    let entriesSpy = {
+    let actionSpy = {
+      entries: {
+        received: expect.createSpy(() => {})
+      },
       moveCurrentEntry: expect.createSpy(() => {}),
-      receivedEntries: expect.createSpy(() => {}),
       rehydrateEntries: expect.createSpy(() => {}),
       setCurrentEntry: expect.createSpy(() => {})
     }
@@ -17,9 +19,9 @@ describe('Counter middleware', () => {
       increaseOffsetLimit: expect.createSpy(() => {})
     }
     let store = applyMiddleware(thunkMiddleware, counter)(createStore)(handleEntries({
-      entries: entriesSpy, counter: counterSpy
+      entries: actionSpy, counter: counterSpy
     }))
-    store.dispatch(receivedEntries(require('../fixtures/epictetus.json'), store.getState()))
+    store.dispatch(entries.received(require('../fixtures/epictetus.json'), store.getState()))
     expect(counterSpy.increaseOffsetLimit.calls.length).toEqual(1)
   })
 })

@@ -15,7 +15,7 @@ function intercept(spy) {
   return (state = initialState.entries, action) => {
     switch(action.type) {
       case RECEIVED_ENTRIES:
-        spy.receivedEntries()
+        spy.entries.received()
         return {
           hidden: [...state.hidden],
           rendered: state.rendered,
@@ -29,14 +29,14 @@ function intercept(spy) {
           current: state.current
         }
       case MOVE_CURRENT_ENTRY:
-        spy.moveCurrentEntry()
+        spy.entry.current.move()
         return {
           hidden: state.hidden.filter(entry => entry.id !== action.entry.id),
           rendered: [...state.rendered, action.entry],
           current: state.current
         }
       case SET_CURRENT_ENTRY:
-        spy.setCurrentEntry()
+        spy.entry.current.set()
         let current = action.entries.hidden[Math.floor(Math.random() * (action.entries.hidden.length - 1))]
         return {
           hidden: [...action.entries.hidden],
