@@ -21,5 +21,7 @@ function setup() {
 }
 
 describe('Entry Component', () => {
-
+  it('should have a favorite button', () => {
+    
+  });
 });

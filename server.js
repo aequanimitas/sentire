@@ -1,10 +1,17 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(session({
+  name: 'sentire-session-cookie-id',
+  secret: 'sentrie-session-secret',
+  resave: true,
+  saveUninitialized: true
+}));
 
 if (process.env.NODE_ENV === 'development') {
 
