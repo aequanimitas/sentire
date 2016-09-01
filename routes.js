@@ -3,7 +3,7 @@ var models = require('./db');
 var router = express.Router();
 var entries = express.Router();
 
-entries.get('/', function(req, res) {
+var show = function(req, res) {
   models.knex('entry')
     .join('author', 'author.authorId', 'entry.authorIdFk')
     .join('book', 'book.bookId', 'entry.bookIdFk')
@@ -20,6 +20,7 @@ entries.get('/', function(req, res) {
     });
 });
 
+entries.get('/', show)
 router.use('/entries', entries);
 
 module.exports = router;

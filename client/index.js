@@ -1,4 +1,3 @@
-import 'milligram/dist/milligram.css';
 require('../scss/main.scss');
 
 import React from 'react';
