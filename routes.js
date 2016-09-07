@@ -18,9 +18,9 @@ var show = function(req, res) {
     .then(function(collection) {
       res.json({data: collection});
     });
-});
+};
 
-entries.get('/', show)
+entries.get('/', show);
 router.use('/entries', entries);
 
 module.exports = router;
