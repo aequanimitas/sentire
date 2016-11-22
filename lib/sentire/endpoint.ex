@@ -36,7 +36,7 @@ defmodule Sentire.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_sentire_key",
-    signing_salt: "yh2GfLvY"
+    signing_salt: "ysLeICXH"
 
   plug Sentire.Router
 end

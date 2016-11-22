@@ -20,7 +20,9 @@ defmodule Sentire.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Sentire do
-  #   pipe_through :api
-  # end
+  scope "/api", Sentire do
+    pipe_through :api
+
+    resources "/verses", VerseController, only: [:index]
+  end
 end
