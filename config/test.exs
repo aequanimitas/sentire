@@ -8,12 +8,3 @@ config :sentire, Sentire.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :sentire, Sentire.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "sentire_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
