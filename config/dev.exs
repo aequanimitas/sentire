@@ -24,8 +24,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :sentire, Sentire.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "sentire_dev",
+  password: "sentire_dev",
   database: "sentire_dev",
   hostname: "localhost",
   pool_size: 10

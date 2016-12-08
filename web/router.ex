@@ -7,7 +7,7 @@ defmodule Sentire.Router do
 
   scope "/api", Sentire do
     pipe_through :api
-    
-    resources "/quotes", QuoteController, except: [:new, :edit]
+
+    resources "/verses", VerseController, except: [:new, :edit]
   end
 end

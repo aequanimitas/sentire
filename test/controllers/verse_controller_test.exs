@@ -1,7 +1,7 @@
-defmodule Sentire.QuoteControllerTest do
+defmodule Sentire.VerseControllerTest do
   use Sentire.ConnCase
 
-  alias Sentire.Quote
+  alias Sentire.Verse
   @valid_attrs %{text: "some content"}
   @invalid_attrs %{}
 
@@ -10,51 +10,51 @@ defmodule Sentire.QuoteControllerTest do
   end
 
   test "lists all entries on index", %{conn: conn} do
-    conn = get conn, quote_path(conn, :index)
+    conn = get conn, verse_path(conn, :index)
     assert json_response(conn, 200)["data"] == []
   end
 
   test "shows chosen resource", %{conn: conn} do
-    quote = Repo.insert! %Quote{}
-    conn = get conn, quote_path(conn, :show, quote)
-    assert json_response(conn, 200)["data"] == %{"id" => quote.id,
-      "text" => quote.text}
+    verse = Repo.insert! %Verse{}
+    conn = get conn, verse_path(conn, :show, verse)
+    assert json_response(conn, 200)["data"] == %{"id" => verse.id,
+      "text" => verse.text}
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
     assert_error_sent 404, fn ->
-      get conn, quote_path(conn, :show, -1)
+      get conn, verse_path(conn, :show, -1)
     end
   end
 
   test "creates and renders resource when data is valid", %{conn: conn} do
-    conn = post conn, quote_path(conn, :create), quote: @valid_attrs
+    conn = post conn, verse_path(conn, :create), verse: @valid_attrs
     assert json_response(conn, 201)["data"]["id"]
-    assert Repo.get_by(Quote, @valid_attrs)
+    assert Repo.get_by(Verse, @valid_attrs)
   end
 
   test "does not create resource and renders errors when data is invalid", %{conn: conn} do
-    conn = post conn, quote_path(conn, :create), quote: @invalid_attrs
+    conn = post conn, verse_path(conn, :create), verse: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "updates and renders chosen resource when data is valid", %{conn: conn} do
-    quote = Repo.insert! %Quote{}
-    conn = put conn, quote_path(conn, :update, quote), quote: @valid_attrs
+    verse = Repo.insert! %Verse{}
+    conn = put conn, verse_path(conn, :update, verse), verse: @valid_attrs
     assert json_response(conn, 200)["data"]["id"]
-    assert Repo.get_by(Quote, @valid_attrs)
+    assert Repo.get_by(Verse, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    quote = Repo.insert! %Quote{}
-    conn = put conn, quote_path(conn, :update, quote), quote: @invalid_attrs
+    verse = Repo.insert! %Verse{}
+    conn = put conn, verse_path(conn, :update, verse), verse: @invalid_attrs
     assert json_response(conn, 422)["errors"] != %{}
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    quote = Repo.insert! %Quote{}
-    conn = delete conn, quote_path(conn, :delete, quote)
+    verse = Repo.insert! %Verse{}
+    conn = delete conn, verse_path(conn, :delete, verse)
     assert response(conn, 204)
-    refute Repo.get(Quote, quote.id)
+    refute Repo.get(Verse, verse.id)
   end
 end

@@ -1,7 +1,7 @@
-defmodule Sentire.Quote do
+defmodule Sentire.Verse do
   use Sentire.Web, :model
 
-  schema "qoutes" do
+  schema "verses" do
     field :text, :string
 
     timestamps()
