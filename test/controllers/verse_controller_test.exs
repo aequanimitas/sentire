@@ -2,7 +2,7 @@ defmodule Sentire.VerseControllerTest do
   use Sentire.ConnCase
 
   alias Sentire.Verse
-  @valid_attrs %{text: "some content"}
+  @valid_attrs %{verse: "some content", verse_number: 42}
   @invalid_attrs %{}
 
   setup %{conn: conn} do
@@ -18,7 +18,8 @@ defmodule Sentire.VerseControllerTest do
     verse = Repo.insert! %Verse{}
     conn = get conn, verse_path(conn, :show, verse)
     assert json_response(conn, 200)["data"] == %{"id" => verse.id,
-      "text" => verse.text}
+      "verse" => verse.verse,
+      "verse_number" => verse.verse_number}
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do

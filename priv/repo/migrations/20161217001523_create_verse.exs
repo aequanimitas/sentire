@@ -3,7 +3,8 @@ defmodule Sentire.Repo.Migrations.CreateVerse do
 
   def change do
     create table(:verses) do
-      add :text, :string
+      add :verse, :text
+      add :verse_number, :integer
 
       timestamps()
     end

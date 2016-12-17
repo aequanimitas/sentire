@@ -2,7 +2,8 @@ defmodule Sentire.Verse do
   use Sentire.Web, :model
 
   schema "verses" do
-    field :text, :string
+    field :verse, :string
+    field :verse_number, :integer
 
     timestamps()
   end
@@ -12,7 +13,7 @@ defmodule Sentire.Verse do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:text])
-    |> validate_required([:text])
+    |> cast(params, [:verse, :verse_number])
+    |> validate_required([:verse, :verse_number])
   end
 end

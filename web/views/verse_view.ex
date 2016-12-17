@@ -11,6 +11,7 @@ defmodule Sentire.VerseView do
 
   def render("verse.json", %{verse: verse}) do
     %{id: verse.id,
-      text: verse.text}
+      verse: verse.verse,
+      verse_number: verse.verse_number}
   end
 end
