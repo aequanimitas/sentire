@@ -25,7 +25,7 @@ defmodule Sentire.VerseController do
   end
 
   def show(conn, %{"id" => id}) do
-    verse = Repo.get!(Verse, id)
+    verse = Repo.get_by!(Verse, verse_number: id)
     render(conn, "show.json", verse: verse)
   end
 

@@ -5,7 +5,7 @@ defmodule Sentire.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", Sentire do
+  scope "/", Sentire do
     pipe_through :api
 
     resources "/verses", VerseController, except: [:new, :edit]

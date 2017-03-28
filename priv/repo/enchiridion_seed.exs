@@ -1,13 +1,21 @@
-defmodule VerseSeed do
+defmodule EnchiridionSeed do
   @nums 1..10 |> Enum.to_list |> Enum.map(&Integer.to_string/1)
+
   def start do
     "./epicench.1b.txt"
     |> File.stream!
     |> Stream.filter(fn x -> !String.contains?(x, "<") end)
     |> Stream.map(&String.strip/1)
-    |> Stream.filter(fn x -> String.length(x) > 0 end)
+    |> Stream.filter(fn x -> byte_size(x) > 0 end)
     |> Enum.slice(6, 1000)
     |> remap
+    |> Enum.map(fn x -> 
+      {verse_number, txt} = Integer.parse(x)
+      # removing ". " from text
+      base = byte_size(". ")
+      <<_::binary-size(base), rest::binary>> = txt
+      {verse_number, rest}
+    end)
   end
 
   def remap([h | t]) do
