@@ -12,8 +12,8 @@ config :sentire,
 # Configures the endpoint
 config :sentire, Sentire.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "MPG05N8/pc9VL1UYapF0kNBMUV9Z/22f49fFENicC0xla15gStGIJ00+CV37yE97",
-  render_errors: [view: Sentire.ErrorView, accepts: ~w(json)],
+  secret_key_base: "03N/hy6OwiZ4cpmdUBV1ep39Qhv7qzj/V9mednlpM+v2otdpvqQDoRvXtHuxQKbr",
+  render_errors: [view: Sentire.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Sentire.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

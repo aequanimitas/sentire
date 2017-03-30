@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :sentire, Sentire.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "sentire_test",
-  password: "sentire_test",
+  username: "postgres",
+  password: "postgres",
   database: "sentire_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
