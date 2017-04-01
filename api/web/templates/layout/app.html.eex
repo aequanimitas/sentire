@@ -25,12 +25,8 @@
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <div id="app">
-        <ul>
-          <a-verse v-for="verse in verses" v-bind:verse="verse"></a-verse>
-        </ul>
-      </div>
     </div> <!-- /container -->
+    <div id="app"></div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

@@ -38,5 +38,6 @@ defmodule Sentire.Endpoint do
     key: "_sentire_key",
     signing_salt: "CcRjBf5q"
 
+    plug CORSPlug, headers: ["Content-Type", "Authorization"]
   plug Sentire.Router
 end

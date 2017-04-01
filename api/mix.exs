@@ -18,8 +18,8 @@ defmodule Sentire.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Sentire, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, 
+                    :phoenix_ecto, :comeonin, :postgrex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,6 +37,9 @@ defmodule Sentire.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
+     {:cors_plug, "~> 1.2"},
+     {:comeonin, "~> 3.0"},
+     {:guardian, "~> 0.14"},
      {:cowboy, "~> 1.0"}]
   end
 

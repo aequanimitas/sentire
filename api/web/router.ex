@@ -11,6 +11,8 @@ defmodule Sentire.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader
+    plug Guardian.Plug.LoadResource
   end
 
   scope "/", Sentire do
@@ -23,6 +25,7 @@ defmodule Sentire.Router do
     pipe_through :api
 
     resources "/verses", VerseController, except: [:new, :edit]
+    post "/register", RegistrationController, :create
   end
 
   # Other scopes may use custom stacks.
